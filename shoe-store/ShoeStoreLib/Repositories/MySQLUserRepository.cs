@@ -4,20 +4,19 @@ using System.Windows.Forms;
 
 namespace ShoeStoreLib.Models
 {
-    public class MySQLUserRepository : IUsersRepository
+    public class MySQLUserRepository : IUserRepository
     {
-        private string connectionString = "server=127.0.0.1;uid=root;pwd=vertrigo;database=shoe_store;";
-
         public User GetUserByLogin(string login)
         {
             try
             {
-                using (MySqlConnection conn = new MySqlConnection(connectionString))
+                using (MySqlConnection conn = new MySqlConnection(DbConfig.CONNECTION_STRING))
                 {
                     conn.Open();
-                    string query = "SELECT id, role, fio, login, password FROM users WHERE login = @login;";
 
+                    string query = "SELECT id, role, fio, login, password FROM users WHERE login = @login;";
                     MySqlCommand command = new MySqlCommand(query, conn);
+
                     command.Parameters.AddWithValue("@login", login);
 
                     using (MySqlDataReader reader = command.ExecuteReader())
@@ -51,8 +50,12 @@ namespace ShoeStoreLib.Models
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Ошибка при получении пользователя: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
+                MessageBox.Show(
+                    $"Ошибка при получении пользователя: {ex.Message}",
+                    "Ошибка",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                );
             }
             return null;
         }

@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using ShoeStoreLib.Models;
 
 namespace ShoeStoreLib
 {
@@ -6,19 +8,21 @@ namespace ShoeStoreLib
     {
         private int _id;
 
-        public string Article { get; set; }
+        public int Id { get { return _id; } }
 
         public DateTime OrderDate { get; set; }
 
         public DateTime DeliveryDate { get; set; }
 
-        public Address Address { get; set; }
+        public PickupLocation PickupLocation { get; set; }
 
         public User User { get; set; }
 
         public int Code { get; set; }
 
         public string Status {  get; set; }
+
+        public List<OrderProductRecord> Products { get; set; }
 
         public Order(int id)
         {

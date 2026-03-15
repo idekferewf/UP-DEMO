@@ -1,17 +1,18 @@
 ﻿namespace ShoeStoreLib.Models
 {
-    public class UsersModel
+    public class UserService
     {
-        private IUsersRepository usersRepository_;
+        private IUserRepository repository_;
 
-        public UsersModel()
+        public UserService()
         {
-            usersRepository_ = new MySQLUserRepository();
+            repository_ = new MySQLUserRepository();
         }
 
         public User Login(string login, string password)
         {
-            User user = usersRepository_.GetUserByLogin(login);
+            User user = repository_.GetUserByLogin(login);
+
             if (user == null)
             {
                 return null;

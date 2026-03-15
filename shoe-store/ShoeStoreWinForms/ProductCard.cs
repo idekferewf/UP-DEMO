@@ -11,9 +11,9 @@ using ShoeStoreLib;
 
 namespace ShoeStoreWinForms
 {
-    public partial class MainForm : Form
+    public partial class ProductCard : Form
     {
-        public MainForm(User user)
+        public ProductCard()
         {
             InitializeComponent();
         }

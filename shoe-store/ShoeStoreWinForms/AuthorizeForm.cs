@@ -7,7 +7,7 @@ namespace ShoeStoreWinForms
 {
     public partial class AuthorizeForm : Form
     {
-        private UsersModel _usersModel = new UsersModel();
+        private UserService usersService_ = new UserService();
 
         public AuthorizeForm()
         {
@@ -19,10 +19,21 @@ namespace ShoeStoreWinForms
             string login = loginTextBox.Text;
             string password = passwordTextBox.Text;
 
-            User user = _usersModel.Login(login, password);
+            if (String.IsNullOrWhiteSpace(password))
+            {
+                MessageBox.Show(
+                    "Пожалуйста, введите пароль",
+                    "Ошибка авторизации",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                );
+                return;
+            }
+
+            User user = usersService_.Login(login, password);
             if (user != null)
             {
-                MainForm mainForm = new MainForm();
+                MainForm mainForm = new MainForm(user);
                 mainForm.Show();
                 Hide();
             }

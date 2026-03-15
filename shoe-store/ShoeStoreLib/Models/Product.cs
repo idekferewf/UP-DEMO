@@ -2,7 +2,9 @@
 {
     public class Product
     {
-        public string Article { get; set; }
+        private string _article;
+
+        public string Article { get { return _article; } }
 
         public string Name { get; set; }
 
@@ -23,5 +25,10 @@
         public string Description { get; set; }
 
         public string PhotoPath { get; set; }
+
+        public Product(string article)
+        {
+            _article = article;
+        }
     }
 }

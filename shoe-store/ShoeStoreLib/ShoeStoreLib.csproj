@@ -91,19 +91,30 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Address.cs" />
-    <Compile Include="Models\IUsersRepository.cs" />
-    <Compile Include="Models\MySQLUserRepository.cs" />
-    <Compile Include="Models\UsersModel.cs" />
-    <Compile Include="Order.cs" />
-    <Compile Include="Product.cs" />
+    <Compile Include="DbConfig.cs" />
+    <Compile Include="Interfaces\IOrderRepository.cs" />
+    <Compile Include="Interfaces\IPickupLocationRepository.cs" />
+    <Compile Include="Interfaces\IProductRepository.cs" />
+    <Compile Include="Models\OrderProductRecord.cs" />
+    <Compile Include="Models\PickupLocation.cs" />
+    <Compile Include="Interfaces\IUserRepository.cs" />
+    <Compile Include="Repositories\MySQLOrderRepository.cs" />
+    <Compile Include="Repositories\MySQLPickupLocationRepository.cs" />
+    <Compile Include="Repositories\MySQLProductRepository.cs" />
+    <Compile Include="Repositories\MySQLUserRepository.cs" />
+    <Compile Include="Services\PickupLocationService.cs" />
+    <Compile Include="Services\ProductService.cs" />
+    <Compile Include="Services\UserService.cs" />
+    <Compile Include="Models\Order.cs" />
+    <Compile Include="Models\Product.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="User.cs" />
-    <Compile Include="UserRole.cs" />
+    <Compile Include="Models\User.cs" />
+    <Compile Include="Models\UserRole.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
