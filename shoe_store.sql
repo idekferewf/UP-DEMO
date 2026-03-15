@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: localhost
--- Время создания: Мар 03 2026 г., 09:55
+-- Время создания: Мар 15 2026 г., 18:00
 -- Версия сервера: 5.7.25
 -- Версия PHP: 7.1.26
 
@@ -25,19 +25,89 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `address`
+-- Структура таблицы `orders`
 --
 
-CREATE TABLE `address` (
+CREATE TABLE `orders` (
+  `id` int(11) NOT NULL COMMENT 'ID заказа',
+  `purchase_date` date NOT NULL COMMENT 'Дата заказа',
+  `delivery_date` date NOT NULL COMMENT 'Дата поставки',
+  `pickup_location_id` int(11) NOT NULL COMMENT 'Адрес выдачи',
+  `user_id` int(11) NOT NULL COMMENT 'Пользователь',
+  `code` int(11) NOT NULL COMMENT 'Код для получения',
+  `status` enum('Завершён','Новый') NOT NULL COMMENT 'Статус'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Заказы';
+
+--
+-- Дамп данных таблицы `orders`
+--
+
+INSERT INTO `orders` (`id`, `purchase_date`, `delivery_date`, `pickup_location_id`, `user_id`, `code`, `status`) VALUES
+(1, '2025-02-27', '2025-04-20', 1, 4, 901, 'Завершён'),
+(2, '2022-09-28', '2025-04-21', 11, 1, 902, 'Завершён'),
+(3, '2025-03-21', '2025-04-22', 2, 2, 903, 'Завершён'),
+(4, '2025-02-20', '2025-04-23', 11, 3, 904, 'Завершён'),
+(5, '2025-03-17', '2025-04-24', 2, 4, 905, 'Завершён'),
+(6, '2025-03-01', '2025-04-25', 15, 1, 906, 'Завершён'),
+(7, '2025-02-28', '2025-04-26', 3, 2, 907, 'Завершён'),
+(8, '2025-03-31', '2025-04-27', 19, 3, 908, 'Новый'),
+(9, '2025-04-02', '2025-04-28', 5, 4, 909, 'Новый'),
+(10, '2025-04-03', '2025-04-29', 19, 4, 910, 'Новый');
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `order_products`
+--
+
+CREATE TABLE `order_products` (
+  `order_id` int(11) NOT NULL COMMENT 'ID заказа',
+  `product_article` varchar(256) NOT NULL COMMENT 'Артикул',
+  `quantity` int(11) NOT NULL COMMENT 'Количество товара'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Товары заказов';
+
+--
+-- Дамп данных таблицы `order_products`
+--
+
+INSERT INTO `order_products` (`order_id`, `product_article`, `quantity`) VALUES
+(1, 'F635R4', 2),
+(1, 'А112Т4', 2),
+(2, 'G783F5', 1),
+(2, 'H782T5', 1),
+(3, 'D572U8', 10),
+(3, 'J384T6', 10),
+(4, 'D329H3', 4),
+(4, 'F572H7', 5),
+(5, 'F635R4', 2),
+(5, 'А112Т4', 2),
+(6, 'G783F5', 1),
+(6, 'H782T5', 1),
+(7, 'D572U8', 10),
+(7, 'J384T6', 10),
+(8, 'D329H3', 4),
+(8, 'F572H7', 5),
+(9, 'B320R5', 5),
+(9, 'G432E4', 1),
+(10, 'E482R4', 5),
+(10, 'S213E3', 5);
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `pickup_locations`
+--
+
+CREATE TABLE `pickup_locations` (
   `id` int(11) NOT NULL COMMENT 'ID адреса',
   `address` varchar(1024) NOT NULL COMMENT 'Адрес'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Пункты выдачи';
 
 --
--- Дамп данных таблицы `address`
+-- Дамп данных таблицы `pickup_locations`
 --
 
-INSERT INTO `address` (`id`, `address`) VALUES
+INSERT INTO `pickup_locations` (`id`, `address`) VALUES
 (1, '420151, г. Лесной, ул. Вишневая, 32'),
 (2, '125061, г. Лесной, ул. Подгорная, 8'),
 (3, '630370, г. Лесной, ул. Шоссейная, 24'),
@@ -134,39 +204,6 @@ INSERT INTO `products` (` article`, `name`, `unit`, `price`, `supplier`, `produc
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `purchase`
---
-
-CREATE TABLE `purchase` (
-  `id` int(11) NOT NULL COMMENT 'ID заказа',
-  `article` varchar(256) NOT NULL COMMENT 'Арикул',
-  `purchase_date` date NOT NULL COMMENT 'Дата заказа',
-  `delivery_date` date NOT NULL COMMENT 'Дата поставки',
-  `address_id` int(11) NOT NULL COMMENT 'Адрес выдачи',
-  `user_id` int(11) NOT NULL COMMENT 'Пользователь',
-  `code` int(11) NOT NULL COMMENT 'Код для получения',
-  `status` enum('Завершён','Новый') NOT NULL COMMENT 'Статус'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Заказы';
-
---
--- Дамп данных таблицы `purchase`
---
-
-INSERT INTO `purchase` (`id`, `article`, `purchase_date`, `delivery_date`, `address_id`, `user_id`, `code`, `status`) VALUES
-(1, 'А112Т4, 2, F635R4, 2', '2025-02-27', '2025-04-20', 1, 4, 901, 'Завершён'),
-(2, 'H782T5, 1, G783F5, 1', '2022-09-28', '2025-04-21', 11, 1, 902, 'Завершён'),
-(3, 'J384T6, 10, D572U8, 10', '2025-03-21', '2025-04-22', 2, 2, 903, 'Завершён'),
-(4, 'F572H7, 5, D329H3, 4', '2025-02-20', '2025-04-23', 11, 3, 904, 'Завершён'),
-(5, 'А112Т4, 2, F635R4, 2', '2025-03-17', '2025-04-24', 2, 4, 905, 'Завершён'),
-(6, 'H782T5, 1, G783F5, 1', '2025-03-01', '2025-04-25', 15, 1, 906, 'Завершён'),
-(7, 'J384T6, 10, D572U8, 10', '2025-02-28', '2025-04-26', 3, 2, 907, 'Завершён'),
-(8, 'F572H7, 5, D329H3, 4', '2025-03-31', '2025-04-27', 19, 3, 908, 'Новый'),
-(9, 'B320R5, 5, G432E4, 1', '2025-04-02', '2025-04-28', 5, 4, 909, 'Новый'),
-(10, 'S213E3, 5, E482R4, 5', '2025-04-03', '2025-04-29', 19, 4, 910, 'Новый');
-
--- --------------------------------------------------------
-
---
 -- Структура таблицы `users`
 --
 
@@ -199,9 +236,25 @@ INSERT INTO `users` (`id`, `role`, `fio`, `login`, `password`) VALUES
 --
 
 --
--- Индексы таблицы `address`
+-- Индексы таблицы `orders`
 --
-ALTER TABLE `address`
+ALTER TABLE `orders`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_id` (`user_id`),
+  ADD KEY `pickup_location_id` (`pickup_location_id`) USING BTREE;
+
+--
+-- Индексы таблицы `order_products`
+--
+ALTER TABLE `order_products`
+  ADD PRIMARY KEY (`order_id`,`product_article`) USING BTREE,
+  ADD KEY `order_id` (`order_id`),
+  ADD KEY `product_article` (`product_article`);
+
+--
+-- Индексы таблицы `pickup_locations`
+--
+ALTER TABLE `pickup_locations`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -209,14 +262,6 @@ ALTER TABLE `address`
 --
 ALTER TABLE `products`
   ADD PRIMARY KEY (` article`);
-
---
--- Индексы таблицы `purchase`
---
-ALTER TABLE `purchase`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `address_id` (`address_id`),
-  ADD KEY `user_id` (`user_id`);
 
 --
 -- Индексы таблицы `users`
@@ -229,16 +274,16 @@ ALTER TABLE `users`
 --
 
 --
--- AUTO_INCREMENT для таблицы `address`
+-- AUTO_INCREMENT для таблицы `orders`
 --
-ALTER TABLE `address`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID адреса', AUTO_INCREMENT=37;
+ALTER TABLE `orders`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID заказа', AUTO_INCREMENT=11;
 
 --
--- AUTO_INCREMENT для таблицы `purchase`
+-- AUTO_INCREMENT для таблицы `pickup_locations`
 --
-ALTER TABLE `purchase`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID заказа', AUTO_INCREMENT=11;
+ALTER TABLE `pickup_locations`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID адреса', AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT для таблицы `users`
@@ -251,11 +296,18 @@ ALTER TABLE `users`
 --
 
 --
--- Ограничения внешнего ключа таблицы `purchase`
+-- Ограничения внешнего ключа таблицы `orders`
 --
-ALTER TABLE `purchase`
-  ADD CONSTRAINT `purchase_ibfk_1` FOREIGN KEY (`address_id`) REFERENCES `address` (`id`),
-  ADD CONSTRAINT `purchase_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
+ALTER TABLE `orders`
+  ADD CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`pickup_location_id`) REFERENCES `pickup_locations` (`id`),
+  ADD CONSTRAINT `orders_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
+
+--
+-- Ограничения внешнего ключа таблицы `order_products`
+--
+ALTER TABLE `order_products`
+  ADD CONSTRAINT `order_products_ibfk_1` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`),
+  ADD CONSTRAINT `order_products_ibfk_2` FOREIGN KEY (`product_article`) REFERENCES `products` (`article`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
