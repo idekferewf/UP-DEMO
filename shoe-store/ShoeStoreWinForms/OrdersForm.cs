@@ -2,15 +2,9 @@
 using ShoeStoreLib;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using ShoeStoreLib.Interfaces;
 using ShoeStoreLib.Repositories;
+using ShoeStoreLib.Models;
 
 namespace ShoeStoreWinForms
 {
@@ -18,31 +12,22 @@ namespace ShoeStoreWinForms
     {
         private OrderService orderService_;
         private PickupLocationService pickupLocationService_;
-        private List<Order> orders_ = new List<Order>();
+        private UserService userService_;
         private User currentUser_ = null;
+        private List<Order> orders_ = new List<Order>();
 
         public OrdersForm(User user)
         {
-            InitializeComponent();
+            orderService_ = new OrderService(new MySQLOrderRepository());
+            userService_ = new UserService(new MySQLUserRepository());
+            pickupLocationService_ = new PickupLocationService(new MySQLPickupLocationRepository());
             currentUser_ = user;
+            InitializeComponent();
 
-            orderService_ = new OrderService();
-            pickupLocationService_ = new PickupLocationService();
-
-            try
-            {
-                orders_ = orderService_.GetAllOrders();
-                FillOrders(orders_);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message,
-                "Ошибка загрузки товаров",
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Error);
-            }
-
-            if (currentUser_.Role != UserRole.Admin)
+            orders_ = orderService_.GetAllOrders();
+            FillOrders(orders_);
+            
+            if (currentUser_ == null || currentUser_.Role != UserRole.Admin)
             {
                 addOrderButton.Enabled = false;
                 deleteOrderButton.Enabled = false;
@@ -64,8 +49,7 @@ namespace ShoeStoreWinForms
                 return;
             }
 
-            string address = pickupLocationService_.GetPickupLocationAddressById(order.Id);
-            orderCard.ShowOrderInfo(order, address);
+            orderCard.ShowOrderInfo(order);
         }
 
         private void deleteOrderButton_Click(object sender, EventArgs e)
@@ -91,17 +75,12 @@ namespace ShoeStoreWinForms
                 orders_.Clear();
                 orders_ = orderService_.GetAllOrders();
                 FillOrders(orders_);
-
-                if (ordersListBox.Items.Count > 0)
-                {
-                    ordersListBox.SelectedIndex = 0;
-                }
             }
         }
 
         private void addOrderButton_Click(object sender, EventArgs e)
         {
-            AddOrEditOrderForm addForm = new AddOrEditOrderForm(orderService_, pickupLocationService_, null, false);
+            AddOrEditOrderForm addForm = new AddOrEditOrderForm(orderService_, pickupLocationService_, userService_, null, false);
             DialogResult result = addForm.ShowDialog();
 
             if (result == DialogResult.OK)
@@ -111,11 +90,6 @@ namespace ShoeStoreWinForms
                 orders_.Clear();
                 orders_ = orderService_.GetAllOrders();
                 FillOrders(orders_);
-
-                if (ordersListBox.Items.Count > 0)
-                {
-                    ordersListBox.SelectedIndex = 0;
-                }
             }
         }
 
@@ -132,7 +106,7 @@ namespace ShoeStoreWinForms
                 return;
             }
 
-            AddOrEditOrderForm editForm = new AddOrEditOrderForm(orderService_, pickupLocationService_, order, true);
+            AddOrEditOrderForm editForm = new AddOrEditOrderForm(orderService_, pickupLocationService_, userService_, order, true);
             DialogResult result = editForm.ShowDialog();
 
             if (result == DialogResult.OK)

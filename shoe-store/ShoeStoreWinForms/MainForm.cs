@@ -4,6 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Windows.Forms;
 using ShoeStoreLib;
+using ShoeStoreLib.Repositories;
 using ShoeStoreLib.Services;
 
 namespace ShoeStoreWinForms
@@ -12,16 +13,15 @@ namespace ShoeStoreWinForms
     {
         private ProductService productService_;
         private OrderService orderService_;
-        private List<Product> products_ = new List<Product>();
         private User currentUser_ = null;
+        private List<Product> products_ = new List<Product>();
 
         public MainForm(User user)
         {
+            productService_ = new ProductService(new MySQLProductRepository());
+            orderService_ = new OrderService(new MySQLOrderRepository());
             currentUser_ = user;
             InitializeComponent();
-
-            productService_ = new ProductService();
-            orderService_ = new OrderService();
 
             products_ = productService_.GetAllProducts();
             FillProducts(products_);
@@ -32,12 +32,12 @@ namespace ShoeStoreWinForms
             productsListBox.DataSource = null;
             productsListBox.DataSource = products;
             productsListBox.DisplayMember = "Article";
+            productCard.Visible = products.Count > 0;
         }
 
         private void productsListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             Product product = (Product)productsListBox.SelectedItem;
-
             if (product == null)
             {
                 return;
@@ -66,7 +66,7 @@ namespace ShoeStoreWinForms
                 showOrdersButton.Enabled = false;
             }
 
-            if (currentUser_ == null || currentUser_.Role == UserRole.Client || currentUser_.Role == UserRole.Manager)
+            if (currentUser_ == null || currentUser_.Role != UserRole.Admin)
             {
                 addProductButton.Enabled = false;
                 deleteProductButton.Enabled = false;
@@ -108,34 +108,18 @@ namespace ShoeStoreWinForms
 
         private void addProductButton_Click(object sender, EventArgs e)
         {
-            AddOrEditForm addForm = new AddOrEditForm(productService_, null, false);
+            AddOrEditProductForm addForm = new AddOrEditProductForm(productService_, null, false);
             DialogResult result = addForm.ShowDialog();
 
             if (result == DialogResult.OK)
             {
-                try
-                {
-                    productService_.AddProduct(addForm.Product);
+                productService_.AddProduct(addForm.Product);
 
-                    products_.Clear();
-                    products_ = productService_.GetAllProducts();
-                    FillProducts(products_);
+                products_.Clear();
+                products_ = productService_.GetAllProducts();
+                FillProducts(products_);
 
-                    if (productsListBox.Items.Count > 0)
-                    {
-                        productsListBox.SelectedIndex = 0;
-                    }
-                    searchToolStripTextBox.Clear();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(
-                        ex.Message,
-                        "Ошибка добавления товара",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Error
-                    );
-                }
+                searchToolStripTextBox.Clear();
             }
         }
 
@@ -152,30 +136,18 @@ namespace ShoeStoreWinForms
                 return;
             }
 
-            AddOrEditForm editForm = new AddOrEditForm(productService_, product, true);
+            AddOrEditProductForm editForm = new AddOrEditProductForm(productService_, product, true);
             DialogResult result = editForm.ShowDialog();
 
             if (result == DialogResult.OK)
             {
-                try
-                {
-                    productService_.EditProduct(editForm.Product);
+                productService_.EditProduct(editForm.Product);
 
-                    products_.Clear();
-                    products_ = productService_.GetAllProducts();
-                    FillProducts(products_);
+                products_.Clear();
+                products_ = productService_.GetAllProducts();
+                FillProducts(products_);
 
-                    searchToolStripTextBox.Clear();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(
-                        ex.Message,
-                        "Ошибка редактирования товара",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Error
-                    );
-                }
+                searchToolStripTextBox.Clear();
             }
         }
 
@@ -199,29 +171,13 @@ namespace ShoeStoreWinForms
             {
                 if (!orderService_.CheckArticle(product))
                 {
-                    try
-                    {
-                        productService_.DeleteProduct(product);
+                    productService_.DeleteProduct(product);
 
-                        products_.Clear();
-                        products_ = productService_.GetAllProducts();
-                        FillProducts(products_);
+                    products_.Clear();
+                    products_ = productService_.GetAllProducts();
+                    FillProducts(products_);
 
-                        if (productsListBox.Items.Count > 0)
-                        {
-                            productsListBox.SelectedIndex = 0;
-                        }
-                        searchToolStripTextBox.Clear();
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(
-                            ex.Message,
-                            "Ошибка удаления товара",
-                            MessageBoxButtons.OK,
-                            MessageBoxIcon.Error
-                        );
-                    }
+                    searchToolStripTextBox.Clear();
                 }
                 else
                 {

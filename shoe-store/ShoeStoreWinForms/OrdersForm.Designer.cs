@@ -42,10 +42,10 @@
             this.ordersListBox.Dock = System.Windows.Forms.DockStyle.Left;
             this.ordersListBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.ordersListBox.FormattingEnabled = true;
-            this.ordersListBox.ItemHeight = 19;
+            this.ordersListBox.ItemHeight = 33;
             this.ordersListBox.Location = new System.Drawing.Point(0, 0);
             this.ordersListBox.Name = "ordersListBox";
-            this.ordersListBox.Size = new System.Drawing.Size(77, 197);
+            this.ordersListBox.Size = new System.Drawing.Size(77, 172);
             this.ordersListBox.TabIndex = 0;
             this.ordersListBox.SelectedIndexChanged += new System.EventHandler(this.ordersListBox_SelectedIndexChanged);
             // 
@@ -53,12 +53,13 @@
             // 
             this.mainToolStrip.AutoSize = false;
             this.mainToolStrip.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.mainToolStrip.ImageScalingSize = new System.Drawing.Size(28, 28);
             this.mainToolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.addOrderButton,
             this.deleteOrderButton});
             this.mainToolStrip.Location = new System.Drawing.Point(77, 0);
             this.mainToolStrip.Name = "mainToolStrip";
-            this.mainToolStrip.Size = new System.Drawing.Size(504, 50);
+            this.mainToolStrip.Size = new System.Drawing.Size(496, 50);
             this.mainToolStrip.TabIndex = 4;
             // 
             // addOrderButton
@@ -102,14 +103,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(581, 197);
+            this.ClientSize = new System.Drawing.Size(573, 172);
             this.Controls.Add(this.orderCard);
             this.Controls.Add(this.mainToolStrip);
             this.Controls.Add(this.ordersListBox);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(597, 236);
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(597, 236);
             this.Name = "OrdersForm";
             this.Text = "Заказы – ShoeStore";
             this.mainToolStrip.ResumeLayout(false);

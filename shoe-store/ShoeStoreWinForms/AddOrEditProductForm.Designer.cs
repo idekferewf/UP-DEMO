@@ -1,6 +1,6 @@
 ﻿namespace ShoeStoreWinForms
 {
-    partial class AddOrEditForm
+    partial class AddOrEditProductForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddOrEditProductForm));
             this.articleLabel = new System.Windows.Forms.Label();
             this.articleTextBox = new System.Windows.Forms.TextBox();
             this.photoPictureBox = new System.Windows.Forms.PictureBox();
@@ -64,7 +65,7 @@
             this.articleLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.articleLabel.Location = new System.Drawing.Point(278, 16);
             this.articleLabel.Name = "articleLabel";
-            this.articleLabel.Size = new System.Drawing.Size(68, 19);
+            this.articleLabel.Size = new System.Drawing.Size(123, 33);
             this.articleLabel.TabIndex = 0;
             this.articleLabel.Text = "Артикул:";
             // 
@@ -73,7 +74,7 @@
             this.articleTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.articleTextBox.Location = new System.Drawing.Point(463, 13);
             this.articleTextBox.Name = "articleTextBox";
-            this.articleTextBox.Size = new System.Drawing.Size(131, 26);
+            this.articleTextBox.Size = new System.Drawing.Size(131, 40);
             this.articleTextBox.TabIndex = 1;
             // 
             // photoPictureBox
@@ -91,7 +92,7 @@
             this.nameLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.nameLabel.Location = new System.Drawing.Point(278, 59);
             this.nameLabel.Name = "nameLabel";
-            this.nameLabel.Size = new System.Drawing.Size(76, 19);
+            this.nameLabel.Size = new System.Drawing.Size(132, 33);
             this.nameLabel.TabIndex = 3;
             this.nameLabel.Text = "Название:";
             // 
@@ -100,7 +101,7 @@
             this.nameTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.nameTextBox.Location = new System.Drawing.Point(463, 56);
             this.nameTextBox.Name = "nameTextBox";
-            this.nameTextBox.Size = new System.Drawing.Size(131, 26);
+            this.nameTextBox.Size = new System.Drawing.Size(131, 40);
             this.nameTextBox.TabIndex = 4;
             // 
             // unitLabel
@@ -109,7 +110,7 @@
             this.unitLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.unitLabel.Location = new System.Drawing.Point(278, 101);
             this.unitLabel.Name = "unitLabel";
-            this.unitLabel.Size = new System.Drawing.Size(148, 19);
+            this.unitLabel.Size = new System.Drawing.Size(258, 33);
             this.unitLabel.TabIndex = 5;
             this.unitLabel.Text = "Единица измерения:";
             // 
@@ -118,7 +119,7 @@
             this.unitTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.unitTextBox.Location = new System.Drawing.Point(463, 98);
             this.unitTextBox.Name = "unitTextBox";
-            this.unitTextBox.Size = new System.Drawing.Size(131, 26);
+            this.unitTextBox.Size = new System.Drawing.Size(131, 40);
             this.unitTextBox.TabIndex = 6;
             // 
             // priceLabel
@@ -127,7 +128,7 @@
             this.priceLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.priceLabel.Location = new System.Drawing.Point(278, 146);
             this.priceLabel.Name = "priceLabel";
-            this.priceLabel.Size = new System.Drawing.Size(46, 19);
+            this.priceLabel.Size = new System.Drawing.Size(81, 33);
             this.priceLabel.TabIndex = 7;
             this.priceLabel.Text = "Цена:";
             // 
@@ -142,7 +143,7 @@
             0,
             0});
             this.priceNumericUpDown.Name = "priceNumericUpDown";
-            this.priceNumericUpDown.Size = new System.Drawing.Size(131, 26);
+            this.priceNumericUpDown.Size = new System.Drawing.Size(131, 40);
             this.priceNumericUpDown.TabIndex = 8;
             // 
             // supplierLabel
@@ -151,7 +152,7 @@
             this.supplierLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.supplierLabel.Location = new System.Drawing.Point(278, 185);
             this.supplierLabel.Name = "supplierLabel";
-            this.supplierLabel.Size = new System.Drawing.Size(87, 19);
+            this.supplierLabel.Size = new System.Drawing.Size(157, 33);
             this.supplierLabel.TabIndex = 9;
             this.supplierLabel.Text = "Поставщик:";
             // 
@@ -160,7 +161,7 @@
             this.supplierTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.supplierTextBox.Location = new System.Drawing.Point(463, 182);
             this.supplierTextBox.Name = "supplierTextBox";
-            this.supplierTextBox.Size = new System.Drawing.Size(131, 26);
+            this.supplierTextBox.Size = new System.Drawing.Size(131, 40);
             this.supplierTextBox.TabIndex = 10;
             // 
             // producerLabel
@@ -169,7 +170,7 @@
             this.producerLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.producerLabel.Location = new System.Drawing.Point(278, 229);
             this.producerLabel.Name = "producerLabel";
-            this.producerLabel.Size = new System.Drawing.Size(116, 19);
+            this.producerLabel.Size = new System.Drawing.Size(202, 33);
             this.producerLabel.TabIndex = 11;
             this.producerLabel.Text = "Производитель:";
             // 
@@ -178,7 +179,7 @@
             this.producerTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.producerTextBox.Location = new System.Drawing.Point(463, 226);
             this.producerTextBox.Name = "producerTextBox";
-            this.producerTextBox.Size = new System.Drawing.Size(131, 26);
+            this.producerTextBox.Size = new System.Drawing.Size(131, 40);
             this.producerTextBox.TabIndex = 12;
             // 
             // categoryLabel
@@ -187,7 +188,7 @@
             this.categoryLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.categoryLabel.Location = new System.Drawing.Point(631, 16);
             this.categoryLabel.Name = "categoryLabel";
-            this.categoryLabel.Size = new System.Drawing.Size(82, 19);
+            this.categoryLabel.Size = new System.Drawing.Size(143, 33);
             this.categoryLabel.TabIndex = 13;
             this.categoryLabel.Text = "Категория:";
             // 
@@ -201,7 +202,7 @@
             "Женская обувь"});
             this.categoryComboBox.Location = new System.Drawing.Point(816, 13);
             this.categoryComboBox.Name = "categoryComboBox";
-            this.categoryComboBox.Size = new System.Drawing.Size(131, 27);
+            this.categoryComboBox.Size = new System.Drawing.Size(131, 41);
             this.categoryComboBox.TabIndex = 14;
             // 
             // discountLabel
@@ -210,7 +211,7 @@
             this.discountLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.discountLabel.Location = new System.Drawing.Point(631, 59);
             this.discountLabel.Name = "discountLabel";
-            this.discountLabel.Size = new System.Drawing.Size(100, 19);
+            this.discountLabel.Size = new System.Drawing.Size(179, 33);
             this.discountLabel.TabIndex = 15;
             this.discountLabel.Text = "Скидка (в %):";
             // 
@@ -219,7 +220,7 @@
             this.discountNumericUpDown.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.discountNumericUpDown.Location = new System.Drawing.Point(816, 57);
             this.discountNumericUpDown.Name = "discountNumericUpDown";
-            this.discountNumericUpDown.Size = new System.Drawing.Size(131, 26);
+            this.discountNumericUpDown.Size = new System.Drawing.Size(131, 40);
             this.discountNumericUpDown.TabIndex = 16;
             // 
             // quantityLabel
@@ -228,7 +229,7 @@
             this.quantityLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.quantityLabel.Location = new System.Drawing.Point(631, 104);
             this.quantityLabel.Name = "quantityLabel";
-            this.quantityLabel.Size = new System.Drawing.Size(160, 19);
+            this.quantityLabel.Size = new System.Drawing.Size(281, 33);
             this.quantityLabel.TabIndex = 17;
             this.quantityLabel.Text = "Количество на складе:";
             // 
@@ -242,7 +243,7 @@
             0,
             0});
             this.quantityNumericUpDown.Name = "quantityNumericUpDown";
-            this.quantityNumericUpDown.Size = new System.Drawing.Size(131, 26);
+            this.quantityNumericUpDown.Size = new System.Drawing.Size(131, 40);
             this.quantityNumericUpDown.TabIndex = 18;
             // 
             // descriptionLabel
@@ -251,7 +252,7 @@
             this.descriptionLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.descriptionLabel.Location = new System.Drawing.Point(631, 147);
             this.descriptionLabel.Name = "descriptionLabel";
-            this.descriptionLabel.Size = new System.Drawing.Size(81, 19);
+            this.descriptionLabel.Size = new System.Drawing.Size(139, 33);
             this.descriptionLabel.TabIndex = 19;
             this.descriptionLabel.Text = "Описание:";
             // 
@@ -303,7 +304,7 @@
             this.cancelButton.UseVisualStyleBackColor = false;
             this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
             // 
-            // AddOrEditForm
+            // AddOrEditProductForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -332,7 +333,11 @@
             this.Controls.Add(this.photoPictureBox);
             this.Controls.Add(this.articleTextBox);
             this.Controls.Add(this.articleLabel);
-            this.Name = "AddOrEditForm";
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.Name = "AddOrEditProductForm";
             this.Load += new System.EventHandler(this.AddOrEditForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.photoPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.priceNumericUpDown)).EndInit();

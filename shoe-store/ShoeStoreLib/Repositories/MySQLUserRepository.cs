@@ -15,8 +15,10 @@ namespace ShoeStoreLib.Models
                 using (MySqlConnection conn = new MySqlConnection(DbConfig.CONNECTION_STRING))
                 {
                     conn.Open();
+
                     string query = "SELECT id, role, fio, login, password FROM users;";
                     MySqlCommand command = new MySqlCommand(query, conn);
+
                     using (MySqlDataReader reader = command.ExecuteReader())
                     {
                         while (reader.Read())
@@ -25,6 +27,7 @@ namespace ShoeStoreLib.Models
                             user.Fio = reader.GetString("fio");
                             user.Login = reader.GetString("login");
                             user.Password = reader.GetString("password");
+
                             string role = reader.GetString("role");
                             if (role == "Администратор")
                             {
@@ -38,6 +41,7 @@ namespace ShoeStoreLib.Models
                             {
                                 user.Role = UserRole.Client;
                             }
+
                             users.Add(user);
                         }
                     }

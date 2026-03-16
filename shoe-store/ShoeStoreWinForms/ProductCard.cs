@@ -7,8 +7,6 @@ namespace ShoeStoreWinForms
 {
     public partial class ProductCard : UserControl
     {
-        private Product product_;
-
         public ProductCard()
         {
             InitializeComponent();
@@ -35,8 +33,6 @@ namespace ShoeStoreWinForms
 
         public void ShowProductInfo(Product product)
         {
-            product_ = product;
-
             categoryLabel.Text = product.Category;
             nameLabel.Text = product.Name;
             descriptionLabel.Text = product.Description;

@@ -7,31 +7,25 @@ namespace ShoeStoreLib.Models
     {
         private IUserRepository repository_;
 
-        public UserService()
+        public UserService(IUserRepository repository)
         {
-            repository_ = new MySQLUserRepository();
+            repository_ = repository;
+        }
+
+        public List<User> GetAllUsers()
+        {
+            return repository_.GetAllUsers();
         }
 
         public List<string> GetAllLogins()
         {
-            return repository_.GetAllUsers().Select(u => u.Login).ToList();
+            return GetAllUsers().Select(u => u.Login).ToList();
         }
 
         public User Login(string login, string password)
         {
             User user = repository_.GetUserByLogin(login);
-
-            if (user == null)
-            {
-                return null;
-            }
-
-            if (user.Password == password)
-            {
-                return user;
-            }
-
-            return null;
+            return user?.Password == password ? user : null;
         }
     }
 }

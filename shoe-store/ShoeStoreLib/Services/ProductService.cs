@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using ShoeStoreLib.Interfaces;
-using ShoeStoreLib.Repositories;
 
 namespace ShoeStoreLib.Services
 {
@@ -9,9 +8,9 @@ namespace ShoeStoreLib.Services
     {
         private IProductRepository repository_;
 
-        public ProductService()
+        public ProductService(IProductRepository repository)
         {
-            repository_ = new MySQLProductRepository();
+            repository_ = repository;
         }
 
         public List<Product> GetAllProducts()
@@ -43,31 +42,33 @@ namespace ShoeStoreLib.Services
             repository_.DeleteProduct(product);
         }
 
+        public bool HasArticle(string article)
+        {
+            return GetAllProducts().Any(p => p.Article == article);
+        }
+
         public List<Product> SearchAndFilterProducts(List<Product> products, string search, string supplier)
         {
-            List<Product> result = new List<Product>();
+            string searchLower = search?.ToLower();
 
-            foreach (Product product in products)
-            {
-                bool matchesSearch = string.IsNullOrEmpty(search) ||
-                    product.Article.ToLower().Contains(search.ToLower()) ||
-                    product.Name.ToLower().Contains(search.ToLower()) ||
-                    product.Unit.ToLower().Contains(search.ToLower()) ||
-                    product.Supplier.ToLower().Contains(search.ToLower()) ||
-                    product.Producer.ToLower().Contains(search.ToLower()) ||
-                    product.Category.ToLower().Contains(search.ToLower()) ||
-                    product.Description.ToLower().Contains(search.ToLower());
-
-                bool matchesSupplier = supplier == "Все поставщики" ||
-                      product.Supplier == supplier;
-
-                if (matchesSearch && matchesSupplier)
+            return products
+                .Where(p =>
                 {
-                    result.Add(product);
-                }
-            }
+                    bool matchesSearch = string.IsNullOrEmpty(searchLower) ||
+                        (p.Article?.ToLower().Contains(searchLower) ?? false) ||
+                        (p.Name?.ToLower().Contains(searchLower) ?? false) ||
+                        (p.Unit?.ToLower().Contains(searchLower) ?? false) ||
+                        (p.Supplier?.ToLower().Contains(searchLower) ?? false) ||
+                        (p.Producer?.ToLower().Contains(searchLower) ?? false) ||
+                        (p.Category?.ToLower().Contains(searchLower) ?? false) ||
+                        (p.Description?.ToLower().Contains(searchLower) ?? false);
 
-            return result;
+                    bool matchesSupplier = supplier == "Все поставщики" ||
+                        p.Supplier == supplier;
+
+                    return matchesSearch && matchesSupplier;
+                })
+                .ToList();
         }
     }
 }

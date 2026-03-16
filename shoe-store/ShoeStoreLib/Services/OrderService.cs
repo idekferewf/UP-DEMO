@@ -1,6 +1,4 @@
 ﻿using ShoeStoreLib.Interfaces;
-using ShoeStoreLib.Models;
-using ShoeStoreLib.Repositories;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -10,9 +8,9 @@ namespace ShoeStoreLib.Services
     {
         private IOrderRepository repository_;
 
-        public OrderService()
+        public OrderService(IOrderRepository repository)
         {
-            repository_ = new MySQLOrderRepository();
+            repository_ = repository;
         }
 
         public List<Order> GetAllOrders()

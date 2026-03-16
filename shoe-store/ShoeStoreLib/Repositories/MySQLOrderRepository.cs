@@ -60,8 +60,6 @@ namespace ShoeStoreLib.Repositories
                 {
                     order.Products = GetAllOrderProducts(order.Id);
                 }
-
-                return orders;
             }
             catch (Exception ex)
             {
@@ -71,8 +69,8 @@ namespace ShoeStoreLib.Repositories
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error
                 );
-                return orders;
             }
+            return orders;
         }
 
         public List<OrderProductRecord> GetAllOrderProducts(int id)
@@ -100,8 +98,6 @@ namespace ShoeStoreLib.Repositories
                         }
                     }
                 }
-
-                return products;
             }
             catch (Exception ex)
             {
@@ -111,8 +107,8 @@ namespace ShoeStoreLib.Repositories
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error
                 );
-                return products;
             }
+            return products;
         }
 
         public void AddOrder(Order order)
@@ -123,14 +119,14 @@ namespace ShoeStoreLib.Repositories
                 {
                     conn.Open();
 
-                    string query = "INSERT INTO orders (order_date, delivery_date, pickup_id, user_id, code, status) " +
-                                   "VALUES (@order_date, @delivery_date, @pickup_id, @user_id, @code, @status)";
+                    string query = "INSERT INTO orders (order_date, delivery_date, pickup_location_id, user_id, code, status) " +
+                                   "VALUES (@order_date, @delivery_date, @pickup_location_id, @user_id, @code, @status)";
                     MySqlCommand command = new MySqlCommand(query, conn);
 
                     command.Parameters.AddWithValue("@order_date", order.OrderDate);
                     command.Parameters.AddWithValue("@delivery_date", order.DeliveryDate);
-                    command.Parameters.AddWithValue("@pickup_id", order.PickupLocation?.Id);
-                    command.Parameters.AddWithValue("@user_id", order.User?.Id);
+                    command.Parameters.AddWithValue("@pickup_location_id", order.PickupLocation?.Id);
+                    command.Parameters.AddWithValue("@user_id", order.User.Id);
                     command.Parameters.AddWithValue("@code", order.Code);
                     command.Parameters.AddWithValue("@status", order.Status);
 
@@ -164,7 +160,7 @@ namespace ShoeStoreLib.Repositories
                     command.Parameters.AddWithValue("@order_date", order.OrderDate);
                     command.Parameters.AddWithValue("@delivery_date", order.DeliveryDate);
                     command.Parameters.AddWithValue("@pickup_locationl_id", order.PickupLocation?.Id);
-                    command.Parameters.AddWithValue("@user_id", order.User?.Id);
+                    command.Parameters.AddWithValue("@user_id", order.User.Id);
                     command.Parameters.AddWithValue("@code", order.Code);
                     command.Parameters.AddWithValue("@status", order.Status);
                     command.Parameters.AddWithValue("@id", order.Id);

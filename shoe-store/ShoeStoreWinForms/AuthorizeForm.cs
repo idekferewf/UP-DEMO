@@ -11,7 +11,7 @@ namespace ShoeStoreWinForms
 
         public AuthorizeForm()
         {
-            userService_ = new UserService();
+            userService_ = new UserService(new MySQLUserRepository());
             InitializeComponent();
         }
 
@@ -23,7 +23,7 @@ namespace ShoeStoreWinForms
             if (String.IsNullOrWhiteSpace(password))
             {
                 MessageBox.Show(
-                    "Пожалуйста, введите пароль",
+                    "Пожалуйста, введите пароль.",
                     "Ошибка авторизации",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error
@@ -35,6 +35,7 @@ namespace ShoeStoreWinForms
             if (user != null)
             {
                 MainForm mainForm = new MainForm(user);
+                mainForm.FormClosed += (s, args) => Close();
                 mainForm.Show();
                 Hide();
             }
@@ -52,6 +53,7 @@ namespace ShoeStoreWinForms
         private void loginAsGuestButton_Click(object sender, EventArgs e)
         {
             MainForm mainForm = new MainForm(null);
+            mainForm.FormClosed += (s, args) => Close();
             mainForm.Show();
             Hide();
         }

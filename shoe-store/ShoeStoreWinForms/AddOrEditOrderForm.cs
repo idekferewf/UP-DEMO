@@ -2,20 +2,29 @@
 using ShoeStoreLib;
 using System;
 using System.Windows.Forms;
+using ShoeStoreLib.Models;
 
 namespace ShoeStoreWinForms
 {
     public partial class AddOrEditOrderForm : Form
     {
-        private Order order_;
         private OrderService orderService_;
         private PickupLocationService pickupLocationService_;
+        private UserService userService_;
+        private Order order_;
         private bool isEdit_;
 
-        public AddOrEditOrderForm(OrderService orderService, PickupLocationService pickupLocationService, Order order, bool isEdit)
+        public AddOrEditOrderForm(
+            OrderService orderService,
+            PickupLocationService pickupLocationService,
+            UserService userService,
+            Order order,
+            bool isEdit
+        )
         {
             orderService_ = orderService;
             pickupLocationService_ = pickupLocationService;
+            userService_ = userService;
             order_ = order;
             isEdit_ = isEdit;
             InitializeComponent();
@@ -36,7 +45,8 @@ namespace ShoeStoreWinForms
             }
 
             order_.Status = statusComboBox.Text;
-            order_.PickupLocation = pickupLocationService_.GetPickupLocation(addressComboBox.Text);
+            order_.PickupLocation = (PickupLocation)pickupLocationComboBox.SelectedItem;
+            order_.User = (User)userComboBox.SelectedItem;
             order_.OrderDate = orderDateTimePicker.Value;
             order_.DeliveryDate = deliveryDateTimePicker.Value;
 
@@ -45,25 +55,29 @@ namespace ShoeStoreWinForms
 
         private void AddOrEditOrderForm_Load(object sender, EventArgs e)
         {
-            addressComboBox.DataSource = null;
-            addressComboBox.DataSource = pickupLocationService_.GetAllPickupLocations();
-            addressComboBox.DisplayMember = "Address";
+            pickupLocationComboBox.DataSource = null;
+            pickupLocationComboBox.DataSource = pickupLocationService_.GetAllPickupLocations();
+            pickupLocationComboBox.DisplayMember = "Address";
+
+            userComboBox.DataSource = null;
+            userComboBox.DataSource = userService_.GetAllUsers();
+            userComboBox.DisplayMember = "Fio";
 
             if (!isEdit_)
             {
-                Text = "Добавление заказа";
+                Text = "Добавление заказа – ShoeStore";
                 idTextBox.Value = orderService_.GenerateNextId();
                 statusComboBox.Text = "Новый";
+                return;
             }
-            else
-            {
-                Text = "Редактирование заказа";
-                idTextBox.Value = order_.Id;
-                statusComboBox.Text = order_.Status;
-                addressComboBox.Text = order_.PickupLocation.Address;
-                orderDateTimePicker.Value = order_.OrderDate;
-                deliveryDateTimePicker.Value = order_.DeliveryDate;
-            }
+
+            Text = "Редактирование заказа – ShoeStore";
+            idTextBox.Value = order_.Id;
+            statusComboBox.Text = order_.Status;
+            pickupLocationComboBox.SelectedItem = order_.PickupLocation;
+            userComboBox.SelectedItem = order_.User;
+            orderDateTimePicker.Value = order_.OrderDate;
+            deliveryDateTimePicker.Value = order_.DeliveryDate;
         }
     }
 }

@@ -55,7 +55,7 @@
             this.productsListBox.Dock = System.Windows.Forms.DockStyle.Left;
             this.productsListBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.productsListBox.FormattingEnabled = true;
-            this.productsListBox.ItemHeight = 19;
+            this.productsListBox.ItemHeight = 33;
             this.productsListBox.Location = new System.Drawing.Point(0, 0);
             this.productsListBox.Name = "productsListBox";
             this.productsListBox.Size = new System.Drawing.Size(137, 410);
@@ -66,6 +66,7 @@
             // 
             this.mainToolStrip.AutoSize = false;
             this.mainToolStrip.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.mainToolStrip.ImageScalingSize = new System.Drawing.Size(28, 28);
             this.mainToolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.userFioToolStripLabel,
             this.searchToolStripLabel,
@@ -83,14 +84,14 @@
             this.userFioToolStripLabel.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.userFioToolStripLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.userFioToolStripLabel.Name = "userFioToolStripLabel";
-            this.userFioToolStripLabel.Size = new System.Drawing.Size(54, 42);
+            this.userFioToolStripLabel.Size = new System.Drawing.Size(99, 39);
             this.userFioToolStripLabel.Text = "userFio";
             // 
             // searchToolStripLabel
             // 
             this.searchToolStripLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.searchToolStripLabel.Name = "searchToolStripLabel";
-            this.searchToolStripLabel.Size = new System.Drawing.Size(54, 42);
+            this.searchToolStripLabel.Size = new System.Drawing.Size(97, 39);
             this.searchToolStripLabel.Text = "Поиск:";
             // 
             // searchToolStripTextBox
@@ -99,7 +100,7 @@
             this.searchToolStripTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.searchToolStripTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.searchToolStripTextBox.Name = "searchToolStripTextBox";
-            this.searchToolStripTextBox.Size = new System.Drawing.Size(150, 26);
+            this.searchToolStripTextBox.Size = new System.Drawing.Size(150, 40);
             this.searchToolStripTextBox.TextChanged += new System.EventHandler(this.SearchOrFilterProducts);
             // 
             // toolStripSeparator1
@@ -111,7 +112,7 @@
             // supplierToolStripLabel
             // 
             this.supplierToolStripLabel.Name = "supplierToolStripLabel";
-            this.supplierToolStripLabel.Size = new System.Drawing.Size(87, 42);
+            this.supplierToolStripLabel.Size = new System.Drawing.Size(157, 39);
             this.supplierToolStripLabel.Text = "Поставщик:";
             // 
             // supplierToolStripComboBox
@@ -120,13 +121,14 @@
             this.supplierToolStripComboBox.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.supplierToolStripComboBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.supplierToolStripComboBox.Name = "supplierToolStripComboBox";
-            this.supplierToolStripComboBox.Size = new System.Drawing.Size(175, 27);
+            this.supplierToolStripComboBox.Size = new System.Drawing.Size(175, 41);
             this.supplierToolStripComboBox.SelectedIndexChanged += new System.EventHandler(this.SearchOrFilterProducts);
             // 
             // sortToolStrip
             // 
             this.sortToolStrip.AutoSize = false;
             this.sortToolStrip.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.sortToolStrip.ImageScalingSize = new System.Drawing.Size(28, 28);
             this.sortToolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.sortIncQuantityButton,
             this.sortDecQuantityButton});
@@ -143,7 +145,7 @@
             this.sortIncQuantityButton.Image = ((System.Drawing.Image)(resources.GetObject("sortIncQuantityButton.Image")));
             this.sortIncQuantityButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.sortIncQuantityButton.Name = "sortIncQuantityButton";
-            this.sortIncQuantityButton.Size = new System.Drawing.Size(361, 42);
+            this.sortIncQuantityButton.Size = new System.Drawing.Size(622, 39);
             this.sortIncQuantityButton.Text = "Сортировать по возрастанию количества на складе";
             this.sortIncQuantityButton.Click += new System.EventHandler(this.sortIncQuantityButton_Click);
             // 
@@ -156,7 +158,7 @@
             this.sortDecQuantityButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.sortDecQuantityButton.Margin = new System.Windows.Forms.Padding(4, 1, 0, 2);
             this.sortDecQuantityButton.Name = "sortDecQuantityButton";
-            this.sortDecQuantityButton.Size = new System.Drawing.Size(344, 42);
+            this.sortDecQuantityButton.Size = new System.Drawing.Size(593, 37);
             this.sortDecQuantityButton.Text = "Сортировать по убыванию количества на складе";
             this.sortDecQuantityButton.Click += new System.EventHandler(this.sortDecQuantityButton_Click);
             // 
@@ -165,6 +167,7 @@
             this.bottomToolStrip.AutoSize = false;
             this.bottomToolStrip.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.bottomToolStrip.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.bottomToolStrip.ImageScalingSize = new System.Drawing.Size(28, 28);
             this.bottomToolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.addProductButton,
             this.deleteProductButton,
@@ -184,7 +187,7 @@
             this.addProductButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.addProductButton.Margin = new System.Windows.Forms.Padding(0, 1, 0, 4);
             this.addProductButton.Name = "addProductButton";
-            this.addProductButton.Size = new System.Drawing.Size(120, 36);
+            this.addProductButton.Size = new System.Drawing.Size(203, 36);
             this.addProductButton.Text = "Добавить товар";
             this.addProductButton.Click += new System.EventHandler(this.addProductButton_Click);
             // 
@@ -197,7 +200,7 @@
             this.deleteProductButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.deleteProductButton.Margin = new System.Windows.Forms.Padding(4, 1, 0, 4);
             this.deleteProductButton.Name = "deleteProductButton";
-            this.deleteProductButton.Size = new System.Drawing.Size(110, 36);
+            this.deleteProductButton.Size = new System.Drawing.Size(187, 36);
             this.deleteProductButton.Text = "Удалить товар";
             this.deleteProductButton.Click += new System.EventHandler(this.deleteProductButton_Click);
             // 
@@ -211,7 +214,7 @@
             this.showOrdersButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.showOrdersButton.Margin = new System.Windows.Forms.Padding(0, 1, 2, 4);
             this.showOrdersButton.Name = "showOrdersButton";
-            this.showOrdersButton.Size = new System.Drawing.Size(59, 36);
+            this.showOrdersButton.Size = new System.Drawing.Size(101, 36);
             this.showOrdersButton.Text = "Заказы";
             this.showOrdersButton.Click += new System.EventHandler(this.showOrdersButton_Click);
             // 
@@ -234,10 +237,13 @@
             this.Controls.Add(this.mainToolStrip);
             this.Controls.Add(this.productCard);
             this.Controls.Add(this.productsListBox);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "MainForm";
-            this.Text = "Товары – ShoeStore";
+            this.Text = "Товары - ShoeStore";
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.mainToolStrip.ResumeLayout(false);
             this.mainToolStrip.PerformLayout();

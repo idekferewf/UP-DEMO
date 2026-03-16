@@ -2,23 +2,22 @@
 using ShoeStoreLib;
 using System;
 using System.Drawing;
-using System.Linq;
 using System.Windows.Forms;
 using System.IO;
 
 namespace ShoeStoreWinForms
 {
-    public partial class AddOrEditForm : Form
+    public partial class AddOrEditProductForm : Form
     {
-        private string selectedImagePath_ = "Pictures/picture.png";
-        private Product product_;
         private ProductService productService_;
+        private Product product_;
         private bool isEdit_;
+        private string selectedPhotoPath_ = "Pictures/picture.png";
 
-        public AddOrEditForm(ProductService service, Product product, bool isEdit)
+        public AddOrEditProductForm(ProductService productService, Product product, bool isEdit)
         {
             product_ = product;
-            productService_ = service;
+            productService_ = productService;
             isEdit_ = isEdit;
             InitializeComponent();
         }
@@ -44,7 +43,7 @@ namespace ShoeStoreWinForms
                 return;
             }
 
-            if (!isEdit_ && HasArticle(articleTextBox.Text))
+            if (!isEdit_ && productService_.HasArticle(articleTextBox.Text))
             {
                 MessageBox.Show(
                     "Товар с указанным артикулом уже существует.",
@@ -130,40 +129,40 @@ namespace ShoeStoreWinForms
             product_.Discount = (int)discountNumericUpDown.Value;
             product_.Quantity = (int)quantityNumericUpDown.Value;
             product_.Description = descriptionTextBox.Text;
-            product_.PhotoPath = selectedImagePath_;
-            DialogResult = DialogResult.OK;
-        }
+            product_.PhotoPath = selectedPhotoPath_;
 
-        public bool HasArticle(string article)
-        {
-            return productService_.GetAllProducts().Any(p => p.Article == article);
+            DialogResult = DialogResult.OK;
         }
 
         private void AddOrEditForm_Load(object sender, EventArgs e)
         {
             if (!isEdit_)
             {
-                photoPictureBox.Load(selectedImagePath_);
+                photoPictureBox.Load(selectedPhotoPath_);
                 Text = "Добавление товара – ShoeStore";
                 categoryComboBox.Text = "Мужская обувь";
+                return;
             }
-            else
+
+            Text = "Редактирование товара – ShoeStore";
+
+            if (!String.IsNullOrEmpty(product_.PhotoPath))
             {
-                Text = "Редактирование товара – ShoeStore";
-                selectedImagePath_ = $"Pictures/{product_.PhotoPath}";
-                photoPictureBox.Load(selectedImagePath_);
-                articleTextBox.Text = product_.Article;
-                articleTextBox.Enabled = false;
-                nameTextBox.Text = product_.Name;
-                unitTextBox.Text = product_.Unit;
-                priceNumericUpDown.Value = product_.Price;
-                supplierTextBox.Text = product_.Supplier;
-                producerTextBox.Text = product_.Producer;
-                categoryComboBox.Text = product_.Category;
-                discountNumericUpDown.Value = product_.Discount;
-                quantityNumericUpDown.Value = product_.Quantity;
-                descriptionTextBox.Text = product_.Description;
+                selectedPhotoPath_ = $"Pictures/{product_.PhotoPath}";
             }
+            photoPictureBox.Load(selectedPhotoPath_);
+
+            articleTextBox.Text = product_.Article;
+            articleTextBox.Enabled = false;
+            nameTextBox.Text = product_.Name;
+            unitTextBox.Text = product_.Unit;
+            priceNumericUpDown.Value = product_.Price;
+            supplierTextBox.Text = product_.Supplier;
+            producerTextBox.Text = product_.Producer;
+            categoryComboBox.Text = product_.Category;
+            discountNumericUpDown.Value = product_.Discount;
+            quantityNumericUpDown.Value = product_.Quantity;
+            descriptionTextBox.Text = product_.Description;
         }
 
         private void loadPhotoButton_Click(object sender, EventArgs e)
@@ -183,7 +182,7 @@ namespace ShoeStoreWinForms
                         string targetPath = Path.Combine(Application.StartupPath, fileName);
                         File.Copy(sourcePath, targetPath, true);
 
-                        selectedImagePath_ = fileName;
+                        selectedPhotoPath_ = fileName;
 
                         photoPictureBox.Image?.Dispose();
                         photoPictureBox.Image = Image.FromFile(targetPath);

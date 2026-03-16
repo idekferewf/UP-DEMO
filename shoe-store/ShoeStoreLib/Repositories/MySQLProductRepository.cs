@@ -40,8 +40,6 @@ namespace ShoeStoreLib.Repositories
                         }
                     }
                 }
-
-                return products;
             }
             catch (Exception ex)
             {
