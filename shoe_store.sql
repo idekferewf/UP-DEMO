@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: localhost
--- Время создания: Мар 15 2026 г., 18:00
+-- Время создания: Мар 16 2026 г., 20:56
 -- Версия сервера: 5.7.25
 -- Версия PHP: 7.1.26
 
@@ -30,7 +30,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `orders` (
   `id` int(11) NOT NULL COMMENT 'ID заказа',
-  `purchase_date` date NOT NULL COMMENT 'Дата заказа',
+  `order_date` date NOT NULL COMMENT 'Дата заказа',
   `delivery_date` date NOT NULL COMMENT 'Дата поставки',
   `pickup_location_id` int(11) NOT NULL COMMENT 'Адрес выдачи',
   `user_id` int(11) NOT NULL COMMENT 'Пользователь',
@@ -42,7 +42,7 @@ CREATE TABLE `orders` (
 -- Дамп данных таблицы `orders`
 --
 
-INSERT INTO `orders` (`id`, `purchase_date`, `delivery_date`, `pickup_location_id`, `user_id`, `code`, `status`) VALUES
+INSERT INTO `orders` (`id`, `order_date`, `delivery_date`, `pickup_location_id`, `user_id`, `code`, `status`) VALUES
 (1, '2025-02-27', '2025-04-20', 1, 4, 901, 'Завершён'),
 (2, '2022-09-28', '2025-04-21', 11, 1, 902, 'Завершён'),
 (3, '2025-03-21', '2025-04-22', 2, 2, 903, 'Завершён'),
@@ -152,7 +152,7 @@ INSERT INTO `pickup_locations` (`id`, `address`) VALUES
 --
 
 CREATE TABLE `products` (
-  ` article` varchar(256) NOT NULL COMMENT 'Артикул',
+  `article` varchar(256) NOT NULL COMMENT 'Артикул',
   `name` varchar(256) NOT NULL COMMENT 'Название',
   `unit` varchar(32) NOT NULL COMMENT 'Единица измерения',
   `price` decimal(10,2) NOT NULL COMMENT 'Цена',
@@ -169,7 +169,7 @@ CREATE TABLE `products` (
 -- Дамп данных таблицы `products`
 --
 
-INSERT INTO `products` (` article`, `name`, `unit`, `price`, `supplier`, `producer`, `category`, `discount`, `quantity`, `description`, `photo_path`) VALUES
+INSERT INTO `products` (`article`, `name`, `unit`, `price`, `supplier`, `producer`, `category`, `discount`, `quantity`, `description`, `photo_path`) VALUES
 ('B320R5', 'Туфли', 'шт.', '4300.00', 'Kari', 'Rieker', 'Женская обувь', 2, 6, 'Туфли Rieker женские демисезонные, размер 41, цвет коричневый', '9.jpg'),
 ('B431R5', 'Ботинки', 'шт.', '2700.00', 'Обувь для вас', 'Rieker', 'Мужская обувь', 2, 5, 'Мужские кожаные ботинки/мужские ботинки', ''),
 ('C436G5', 'Ботинки', 'шт.', '10200.00', 'Kari', 'Alessio Nesca', 'Женская обувь', 15, 9, 'Ботинки женские, ARGO, размер 40', ''),
@@ -247,7 +247,7 @@ ALTER TABLE `orders`
 -- Индексы таблицы `order_products`
 --
 ALTER TABLE `order_products`
-  ADD PRIMARY KEY (`order_id`,`product_article`) USING BTREE,
+  ADD PRIMARY KEY (`order_id`,`product_article`),
   ADD KEY `order_id` (`order_id`),
   ADD KEY `product_article` (`product_article`);
 
@@ -261,7 +261,7 @@ ALTER TABLE `pickup_locations`
 -- Индексы таблицы `products`
 --
 ALTER TABLE `products`
-  ADD PRIMARY KEY (` article`);
+  ADD PRIMARY KEY (`article`);
 
 --
 -- Индексы таблицы `users`
@@ -306,8 +306,8 @@ ALTER TABLE `orders`
 -- Ограничения внешнего ключа таблицы `order_products`
 --
 ALTER TABLE `order_products`
-  ADD CONSTRAINT `order_products_ibfk_1` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`),
-  ADD CONSTRAINT `order_products_ibfk_2` FOREIGN KEY (`product_article`) REFERENCES `products` (`article`);
+  ADD CONSTRAINT `order_products_ibfk_1` FOREIGN KEY (`product_article`) REFERENCES `products` (`article`),
+  ADD CONSTRAINT `order_products_ibfk_2` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
