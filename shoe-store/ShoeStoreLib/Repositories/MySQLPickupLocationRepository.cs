@@ -54,7 +54,7 @@ namespace ShoeStoreLib.Repositories
                 {
                     conn.Open();
 
-                    string query = "SELECT id, address FROM pickups";
+                    string query = "SELECT id, address FROM pickup_locations";
                     MySqlCommand command = new MySqlCommand(query, conn);
 
                     using (MySqlDataReader reader = command.ExecuteReader())

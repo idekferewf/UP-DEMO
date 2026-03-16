@@ -1,4 +1,7 @@
-﻿namespace ShoeStoreLib.Models
+﻿using System.Collections.Generic;
+using System.Linq;
+
+namespace ShoeStoreLib.Models
 {
     public class UserService
     {
@@ -7,6 +10,11 @@
         public UserService()
         {
             repository_ = new MySQLUserRepository();
+        }
+
+        public List<string> GetAllLogins()
+        {
+            return repository_.GetAllUsers().Select(u => u.Login).ToList();
         }
 
         public User Login(string login, string password)

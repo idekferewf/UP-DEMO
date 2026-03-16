@@ -21,15 +21,11 @@ namespace ShoeStoreLib.Services
 
         public List<string> GetAllSuppliers()
         {
-            List<Product> products = repository_.GetAllProducts();
-
-            List<string> suppliers = products
+            return GetAllProducts()
                 .Select(p => p.Supplier)
                 .Distinct()
                 .Prepend("Все поставщики")
                 .ToList();
-
-            return suppliers;
         }
 
         public void AddProduct(Product product)
@@ -45,6 +41,33 @@ namespace ShoeStoreLib.Services
         public void DeleteProduct(Product product)
         {
             repository_.DeleteProduct(product);
+        }
+
+        public List<Product> SearchAndFilterProducts(List<Product> products, string search, string supplier)
+        {
+            List<Product> result = new List<Product>();
+
+            foreach (Product product in products)
+            {
+                bool matchesSearch = string.IsNullOrEmpty(search) ||
+                    product.Article.ToLower().Contains(search.ToLower()) ||
+                    product.Name.ToLower().Contains(search.ToLower()) ||
+                    product.Unit.ToLower().Contains(search.ToLower()) ||
+                    product.Supplier.ToLower().Contains(search.ToLower()) ||
+                    product.Producer.ToLower().Contains(search.ToLower()) ||
+                    product.Category.ToLower().Contains(search.ToLower()) ||
+                    product.Description.ToLower().Contains(search.ToLower());
+
+                bool matchesSupplier = supplier == "Все поставщики" ||
+                      product.Supplier == supplier;
+
+                if (matchesSearch && matchesSupplier)
+                {
+                    result.Add(product);
+                }
+            }
+
+            return result;
         }
     }
 }

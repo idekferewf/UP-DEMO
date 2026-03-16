@@ -7,16 +7,17 @@ namespace ShoeStoreWinForms
 {
     public partial class AuthorizeForm : Form
     {
-        private UserService usersService_ = new UserService();
+        private UserService userService_;
 
         public AuthorizeForm()
         {
+            userService_ = new UserService();
             InitializeComponent();
         }
 
-        private void authorizeButton_Click(object sender, EventArgs e)
+        private void loginButton_Click(object sender, EventArgs e)
         {
-            string login = loginTextBox.Text;
+            string login = loginComboBox.Text;
             string password = passwordTextBox.Text;
 
             if (String.IsNullOrWhiteSpace(password))
@@ -30,7 +31,7 @@ namespace ShoeStoreWinForms
                 return;
             }
 
-            User user = usersService_.Login(login, password);
+            User user = userService_.Login(login, password);
             if (user != null)
             {
                 MainForm mainForm = new MainForm(user);
@@ -46,6 +47,18 @@ namespace ShoeStoreWinForms
                     MessageBoxIcon.Error
                 );
             }
+        }
+
+        private void loginAsGuestButton_Click(object sender, EventArgs e)
+        {
+            MainForm mainForm = new MainForm(null);
+            mainForm.Show();
+            Hide();
+        }
+
+        private void AuthorizeForm_Load(object sender, EventArgs e)
+        {
+            loginComboBox.DataSource = userService_.GetAllLogins();
         }
     }
 }

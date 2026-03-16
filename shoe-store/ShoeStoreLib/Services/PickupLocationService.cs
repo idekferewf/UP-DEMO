@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using ShoeStoreLib.Interfaces;
 using ShoeStoreLib.Repositories;
 
@@ -30,19 +31,9 @@ namespace ShoeStoreLib.Services
             return repository_.GetAllPickupLocations();
         }
 
-        public int GetPickupLocationId(string address)
+        public PickupLocation GetPickupLocation(string address)
         {
-            List<PickupLocation> pickupLocations = GetAllPickupLocations();
-
-            foreach (PickupLocation p in pickupLocations)
-            {
-                if (p.Address == address)
-                {
-                    return p.Id;
-                }
-            }
-
-            return 0;
+            return GetAllPickupLocations().FirstOrDefault(p => p.Address == address);
         }
     }
 }

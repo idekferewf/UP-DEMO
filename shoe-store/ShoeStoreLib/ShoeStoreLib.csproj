@@ -102,6 +102,7 @@
     <Compile Include="Repositories\MySQLPickupLocationRepository.cs" />
     <Compile Include="Repositories\MySQLProductRepository.cs" />
     <Compile Include="Repositories\MySQLUserRepository.cs" />
+    <Compile Include="Services\OrderService.cs" />
     <Compile Include="Services\PickupLocationService.cs" />
     <Compile Include="Services\ProductService.cs" />
     <Compile Include="Services\UserService.cs" />

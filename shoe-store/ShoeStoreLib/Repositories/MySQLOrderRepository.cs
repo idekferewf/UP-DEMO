@@ -18,9 +18,12 @@ namespace ShoeStoreLib.Repositories
                 {
                     conn.Open();
 
-                    string query = "SELECT o.id, o.order_date, o.delivery_date, p.address, o.user_fio, o.code, o.status " +
+                    string query = "SELECT o.id, o.order_date, o.delivery_date, o.code, o.status, " +
+                                   "p.id AS pickup_location_id, p.address, " +
+                                   "u.id AS user_id, u.fio, u.login " +
                                    "FROM orders o " +
-                                   "LEFT JOIN pickup_locations p ON o.pickup_id = p.id";
+                                   "LEFT JOIN pickup_locations p ON o.pickup_location_id = p.id " +
+                                   "LEFT JOIN users u ON o.user_id = u.id";
                     MySqlCommand command = new MySqlCommand(query, conn);
 
                     using (MySqlDataReader reader = command.ExecuteReader())
@@ -30,10 +33,24 @@ namespace ShoeStoreLib.Repositories
                             Order order = new Order(reader.GetInt32("id"));
                             order.OrderDate = reader.GetDateTime("order_date");
                             order.DeliveryDate = reader.GetDateTime("delivery_date");
-                            //order.PickupLocationAddress = reader.GetString("address");
-                            //order.UserFio = reader.GetString("user_fio");
                             order.Code = reader.GetInt32("code");
                             order.Status = reader.GetString("status");
+
+                            if (!reader.IsDBNull(reader.GetOrdinal("pickup_location_id")))
+                            {
+                                PickupLocation pickup = new PickupLocation(reader.GetInt32("pickup_location_id"));
+                                pickup.Address = reader.GetString("address");
+                                order.PickupLocation = pickup;
+                            }
+
+                            if (!reader.IsDBNull(reader.GetOrdinal("user_id")))
+                            {
+                                User user = new User(reader.GetInt32("user_id"));
+                                user.Fio = reader.GetString("fio");
+                                user.Login = reader.GetString("login");
+                                order.User = user;
+                            }
+
                             orders.Add(order);
                         }
                     }
@@ -106,13 +123,14 @@ namespace ShoeStoreLib.Repositories
                 {
                     conn.Open();
 
-                    string query = "INSERT INTO orders (order_date, delivery_date, user_fio, code, status) " +
-                                   "VALUES (@order_date, @delivery_date, @user_login, @code, @status)";
+                    string query = "INSERT INTO orders (order_date, delivery_date, pickup_id, user_id, code, status) " +
+                                   "VALUES (@order_date, @delivery_date, @pickup_id, @user_id, @code, @status)";
                     MySqlCommand command = new MySqlCommand(query, conn);
 
                     command.Parameters.AddWithValue("@order_date", order.OrderDate);
                     command.Parameters.AddWithValue("@delivery_date", order.DeliveryDate);
-                    //command.Parameters.AddWithValue(s"@user_login", order.UserFio);
+                    command.Parameters.AddWithValue("@pickup_id", order.PickupLocation?.Id);
+                    command.Parameters.AddWithValue("@user_id", order.User?.Id);
                     command.Parameters.AddWithValue("@code", order.Code);
                     command.Parameters.AddWithValue("@status", order.Status);
 
@@ -139,12 +157,14 @@ namespace ShoeStoreLib.Repositories
                     conn.Open();
 
                     string query = "UPDATE orders SET order_date = @order_date, delivery_date = @delivery_date, " +
-                                   "user_fio = @user_fio, code = @code, status = @status WHERE id = @id";
+                                   "pickup_locationl_id = @pickup_locationl_id, user_id = @user_id, code = @code, status = @status " +
+                                   "WHERE id = @id";
                     MySqlCommand command = new MySqlCommand(query, conn);
 
                     command.Parameters.AddWithValue("@order_date", order.OrderDate);
                     command.Parameters.AddWithValue("@delivery_date", order.DeliveryDate);
-                    //command.Parameters.AddWithValue("@user_fio", order.UserFio);
+                    command.Parameters.AddWithValue("@pickup_locationl_id", order.PickupLocation?.Id);
+                    command.Parameters.AddWithValue("@user_id", order.User?.Id);
                     command.Parameters.AddWithValue("@code", order.Code);
                     command.Parameters.AddWithValue("@status", order.Status);
                     command.Parameters.AddWithValue("@id", order.Id);

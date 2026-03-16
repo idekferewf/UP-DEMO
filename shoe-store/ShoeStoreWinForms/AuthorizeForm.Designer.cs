@@ -29,31 +29,22 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AuthorizeForm));
-            this.loginTextBox = new System.Windows.Forms.TextBox();
             this.titleLabel = new System.Windows.Forms.Label();
             this.loginLabel = new System.Windows.Forms.Label();
             this.passwordLabel = new System.Windows.Forms.Label();
             this.passwordTextBox = new System.Windows.Forms.TextBox();
-            this.authorizeButton = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.loginButton = new System.Windows.Forms.Button();
+            this.loginAsGuestButton = new System.Windows.Forms.Button();
+            this.loginComboBox = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
-            // 
-            // loginTextBox
-            // 
-            this.loginTextBox.Location = new System.Drawing.Point(154, 144);
-            this.loginTextBox.Margin = new System.Windows.Forms.Padding(6);
-            this.loginTextBox.Name = "loginTextBox";
-            this.loginTextBox.Size = new System.Drawing.Size(283, 29);
-            this.loginTextBox.TabIndex = 0;
             // 
             // titleLabel
             // 
             this.titleLabel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.titleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.titleLabel.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.titleLabel.Location = new System.Drawing.Point(0, 0);
-            this.titleLabel.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.titleLabel.Name = "titleLabel";
-            this.titleLabel.Size = new System.Drawing.Size(488, 135);
+            this.titleLabel.Size = new System.Drawing.Size(291, 73);
             this.titleLabel.TabIndex = 1;
             this.titleLabel.Text = "Авторизация";
             this.titleLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -61,87 +52,96 @@
             // loginLabel
             // 
             this.loginLabel.AutoSize = true;
-            this.loginLabel.Location = new System.Drawing.Point(68, 150);
-            this.loginLabel.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.loginLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.loginLabel.Location = new System.Drawing.Point(29, 81);
             this.loginLabel.Name = "loginLabel";
-            this.loginLabel.Size = new System.Drawing.Size(74, 25);
+            this.loginLabel.Size = new System.Drawing.Size(55, 19);
             this.loginLabel.TabIndex = 2;
             this.loginLabel.Text = "Логин:";
             // 
             // passwordLabel
             // 
             this.passwordLabel.AutoSize = true;
-            this.passwordLabel.Location = new System.Drawing.Point(55, 207);
-            this.passwordLabel.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.passwordLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.passwordLabel.Location = new System.Drawing.Point(29, 112);
             this.passwordLabel.Name = "passwordLabel";
-            this.passwordLabel.Size = new System.Drawing.Size(86, 25);
+            this.passwordLabel.Size = new System.Drawing.Size(61, 19);
             this.passwordLabel.TabIndex = 3;
             this.passwordLabel.Text = "Пароль:";
             // 
             // passwordTextBox
             // 
-            this.passwordTextBox.Location = new System.Drawing.Point(154, 201);
-            this.passwordTextBox.Margin = new System.Windows.Forms.Padding(6);
+            this.passwordTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.passwordTextBox.Location = new System.Drawing.Point(96, 109);
             this.passwordTextBox.Name = "passwordTextBox";
             this.passwordTextBox.PasswordChar = '*';
-            this.passwordTextBox.Size = new System.Drawing.Size(283, 29);
+            this.passwordTextBox.Size = new System.Drawing.Size(166, 26);
             this.passwordTextBox.TabIndex = 4;
             // 
-            // authorizeButton
+            // loginButton
             // 
-            this.authorizeButton.Location = new System.Drawing.Point(60, 271);
-            this.authorizeButton.Margin = new System.Windows.Forms.Padding(6);
-            this.authorizeButton.Name = "authorizeButton";
-            this.authorizeButton.Size = new System.Drawing.Size(380, 42);
-            this.authorizeButton.TabIndex = 5;
-            this.authorizeButton.Text = "Войти";
-            this.authorizeButton.UseVisualStyleBackColor = true;
-            this.authorizeButton.Click += new System.EventHandler(this.authorizeButton_Click);
+            this.loginButton.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.loginButton.Location = new System.Drawing.Point(33, 147);
+            this.loginButton.Name = "loginButton";
+            this.loginButton.Size = new System.Drawing.Size(229, 28);
+            this.loginButton.TabIndex = 5;
+            this.loginButton.Text = "Войти";
+            this.loginButton.UseVisualStyleBackColor = true;
+            this.loginButton.Click += new System.EventHandler(this.loginButton_Click);
             // 
-            // button1
+            // loginAsGuestButton
             // 
-            this.button1.Location = new System.Drawing.Point(60, 325);
-            this.button1.Margin = new System.Windows.Forms.Padding(6);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(380, 42);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "Войти как гость";
-            this.button1.UseVisualStyleBackColor = true;
+            this.loginAsGuestButton.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.loginAsGuestButton.Location = new System.Drawing.Point(33, 181);
+            this.loginAsGuestButton.Name = "loginAsGuestButton";
+            this.loginAsGuestButton.Size = new System.Drawing.Size(229, 28);
+            this.loginAsGuestButton.TabIndex = 6;
+            this.loginAsGuestButton.Text = "Войти как гость";
+            this.loginAsGuestButton.UseVisualStyleBackColor = true;
+            this.loginAsGuestButton.Click += new System.EventHandler(this.loginAsGuestButton_Click);
+            // 
+            // loginComboBox
+            // 
+            this.loginComboBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.loginComboBox.FormattingEnabled = true;
+            this.loginComboBox.Location = new System.Drawing.Point(96, 78);
+            this.loginComboBox.Name = "loginComboBox";
+            this.loginComboBox.Size = new System.Drawing.Size(166, 27);
+            this.loginComboBox.TabIndex = 7;
             // 
             // AuthorizeForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(488, 406);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.authorizeButton);
+            this.ClientSize = new System.Drawing.Size(291, 235);
+            this.Controls.Add(this.loginComboBox);
+            this.Controls.Add(this.loginAsGuestButton);
+            this.Controls.Add(this.loginButton);
             this.Controls.Add(this.passwordTextBox);
             this.Controls.Add(this.passwordLabel);
             this.Controls.Add(this.loginLabel);
             this.Controls.Add(this.titleLabel);
-            this.Controls.Add(this.loginTextBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(6);
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(512, 470);
+            this.MaximumSize = new System.Drawing.Size(307, 274);
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(512, 470);
+            this.MinimumSize = new System.Drawing.Size(307, 274);
             this.Name = "AuthorizeForm";
             this.Text = "Авторизация - ShoeStore";
+            this.Load += new System.EventHandler(this.AuthorizeForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox loginTextBox;
         private System.Windows.Forms.Label titleLabel;
         private System.Windows.Forms.Label loginLabel;
         private System.Windows.Forms.Label passwordLabel;
         private System.Windows.Forms.TextBox passwordTextBox;
-        private System.Windows.Forms.Button authorizeButton;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button loginButton;
+        private System.Windows.Forms.Button loginAsGuestButton;
+        private System.Windows.Forms.ComboBox loginComboBox;
     }
 }
