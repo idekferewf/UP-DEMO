@@ -24,6 +24,8 @@ namespace ShoeStoreLib
 
         public List<OrderProductRecord> Products { get; set; }
 
+        public string DisplayId { get { return $"{Id} / {OrderDate.Date.ToString("dd.MM.yyyy")}"; } }
+
         public Order(int id)
         {
             _id = id;

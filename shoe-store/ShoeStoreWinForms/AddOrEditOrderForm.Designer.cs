@@ -52,7 +52,7 @@
             this.idLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.idLabel.Location = new System.Drawing.Point(21, 19);
             this.idLabel.Name = "idLabel";
-            this.idLabel.Size = new System.Drawing.Size(51, 33);
+            this.idLabel.Size = new System.Drawing.Size(28, 19);
             this.idLabel.TabIndex = 0;
             this.idLabel.Text = "ID:";
             // 
@@ -60,9 +60,9 @@
             // 
             this.statusLabel.AutoSize = true;
             this.statusLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.statusLabel.Location = new System.Drawing.Point(21, 64);
+            this.statusLabel.Location = new System.Drawing.Point(21, 62);
             this.statusLabel.Name = "statusLabel";
-            this.statusLabel.Size = new System.Drawing.Size(102, 33);
+            this.statusLabel.Size = new System.Drawing.Size(58, 19);
             this.statusLabel.TabIndex = 2;
             this.statusLabel.Text = "Статус:";
             // 
@@ -73,18 +73,18 @@
             this.statusComboBox.Items.AddRange(new object[] {
             "Новый",
             "Завершён"});
-            this.statusComboBox.Location = new System.Drawing.Point(149, 60);
+            this.statusComboBox.Location = new System.Drawing.Point(149, 58);
             this.statusComboBox.Name = "statusComboBox";
-            this.statusComboBox.Size = new System.Drawing.Size(350, 41);
+            this.statusComboBox.Size = new System.Drawing.Size(350, 27);
             this.statusComboBox.TabIndex = 3;
             // 
             // addressLabel
             // 
             this.addressLabel.AutoSize = true;
             this.addressLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.addressLabel.Location = new System.Drawing.Point(21, 109);
+            this.addressLabel.Location = new System.Drawing.Point(21, 105);
             this.addressLabel.Name = "addressLabel";
-            this.addressLabel.Size = new System.Drawing.Size(154, 33);
+            this.addressLabel.Size = new System.Drawing.Size(86, 19);
             this.addressLabel.TabIndex = 4;
             this.addressLabel.Text = "Адрес ПВЗ:";
             // 
@@ -92,18 +92,18 @@
             // 
             this.pickupLocationComboBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.pickupLocationComboBox.FormattingEnabled = true;
-            this.pickupLocationComboBox.Location = new System.Drawing.Point(149, 105);
+            this.pickupLocationComboBox.Location = new System.Drawing.Point(149, 101);
             this.pickupLocationComboBox.Name = "pickupLocationComboBox";
-            this.pickupLocationComboBox.Size = new System.Drawing.Size(350, 41);
+            this.pickupLocationComboBox.Size = new System.Drawing.Size(350, 27);
             this.pickupLocationComboBox.TabIndex = 5;
             // 
             // orderDateLabel
             // 
             this.orderDateLabel.AutoSize = true;
             this.orderDateLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.orderDateLabel.Location = new System.Drawing.Point(21, 202);
+            this.orderDateLabel.Location = new System.Drawing.Point(21, 194);
             this.orderDateLabel.Name = "orderDateLabel";
-            this.orderDateLabel.Size = new System.Drawing.Size(156, 33);
+            this.orderDateLabel.Size = new System.Drawing.Size(88, 19);
             this.orderDateLabel.TabIndex = 6;
             this.orderDateLabel.Text = "Дата заказа:";
             // 
@@ -111,18 +111,18 @@
             // 
             this.orderDateTimePicker.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.orderDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.orderDateTimePicker.Location = new System.Drawing.Point(149, 199);
+            this.orderDateTimePicker.Location = new System.Drawing.Point(149, 191);
             this.orderDateTimePicker.Name = "orderDateTimePicker";
-            this.orderDateTimePicker.Size = new System.Drawing.Size(350, 40);
+            this.orderDateTimePicker.Size = new System.Drawing.Size(350, 26);
             this.orderDateTimePicker.TabIndex = 7;
             // 
             // deliveryDateLabel
             // 
             this.deliveryDateLabel.AutoSize = true;
             this.deliveryDateLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.deliveryDateLabel.Location = new System.Drawing.Point(21, 246);
+            this.deliveryDateLabel.Location = new System.Drawing.Point(21, 236);
             this.deliveryDateLabel.Name = "deliveryDateLabel";
-            this.deliveryDateLabel.Size = new System.Drawing.Size(170, 33);
+            this.deliveryDateLabel.Size = new System.Drawing.Size(98, 19);
             this.deliveryDateLabel.TabIndex = 8;
             this.deliveryDateLabel.Text = "Дата выдачи:";
             // 
@@ -130,19 +130,19 @@
             // 
             this.deliveryDateTimePicker.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.deliveryDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.deliveryDateTimePicker.Location = new System.Drawing.Point(149, 243);
+            this.deliveryDateTimePicker.Location = new System.Drawing.Point(149, 233);
             this.deliveryDateTimePicker.Name = "deliveryDateTimePicker";
-            this.deliveryDateTimePicker.Size = new System.Drawing.Size(350, 40);
+            this.deliveryDateTimePicker.Size = new System.Drawing.Size(350, 26);
             this.deliveryDateTimePicker.TabIndex = 9;
             // 
             // cancelOrderButton
             // 
-            this.cancelOrderButton.BackColor = System.Drawing.Color.MediumSpringGreen;
+            this.cancelOrderButton.BackColor = System.Drawing.Color.White;
             this.cancelOrderButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.cancelOrderButton.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.cancelOrderButton.Location = new System.Drawing.Point(313, 300);
+            this.cancelOrderButton.Location = new System.Drawing.Point(282, 286);
             this.cancelOrderButton.Name = "cancelOrderButton";
-            this.cancelOrderButton.Size = new System.Drawing.Size(90, 36);
+            this.cancelOrderButton.Size = new System.Drawing.Size(106, 36);
             this.cancelOrderButton.TabIndex = 10;
             this.cancelOrderButton.Text = "Отмена";
             this.cancelOrderButton.UseVisualStyleBackColor = false;
@@ -153,9 +153,9 @@
             this.okOrderButton.BackColor = System.Drawing.Color.MediumSpringGreen;
             this.okOrderButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.okOrderButton.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.okOrderButton.Location = new System.Drawing.Point(409, 300);
+            this.okOrderButton.Location = new System.Drawing.Point(394, 286);
             this.okOrderButton.Name = "okOrderButton";
-            this.okOrderButton.Size = new System.Drawing.Size(90, 36);
+            this.okOrderButton.Size = new System.Drawing.Size(105, 36);
             this.okOrderButton.TabIndex = 11;
             this.okOrderButton.Text = "ОК";
             this.okOrderButton.UseVisualStyleBackColor = false;
@@ -167,25 +167,25 @@
             this.idTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.idTextBox.Location = new System.Drawing.Point(149, 16);
             this.idTextBox.Name = "idTextBox";
-            this.idTextBox.Size = new System.Drawing.Size(350, 40);
+            this.idTextBox.Size = new System.Drawing.Size(350, 26);
             this.idTextBox.TabIndex = 12;
             // 
             // userComboBox
             // 
             this.userComboBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.userComboBox.FormattingEnabled = true;
-            this.userComboBox.Location = new System.Drawing.Point(149, 152);
+            this.userComboBox.Location = new System.Drawing.Point(149, 146);
             this.userComboBox.Name = "userComboBox";
-            this.userComboBox.Size = new System.Drawing.Size(350, 41);
+            this.userComboBox.Size = new System.Drawing.Size(350, 27);
             this.userComboBox.TabIndex = 14;
             // 
             // userLabel
             // 
             this.userLabel.AutoSize = true;
             this.userLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.userLabel.Location = new System.Drawing.Point(21, 156);
+            this.userLabel.Location = new System.Drawing.Point(21, 150);
             this.userLabel.Name = "userLabel";
-            this.userLabel.Size = new System.Drawing.Size(183, 33);
+            this.userLabel.Size = new System.Drawing.Size(104, 19);
             this.userLabel.TabIndex = 13;
             this.userLabel.Text = "Пользователь:";
             // 
@@ -193,7 +193,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(525, 363);
+            this.ClientSize = new System.Drawing.Size(525, 347);
             this.Controls.Add(this.userComboBox);
             this.Controls.Add(this.userLabel);
             this.Controls.Add(this.idTextBox);

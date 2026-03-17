@@ -31,7 +31,7 @@ namespace ShoeStoreWinForms
         {
             productsListBox.DataSource = null;
             productsListBox.DataSource = products;
-            productsListBox.DisplayMember = "Article";
+            productsListBox.DisplayMember = "DisplayName";
             productCard.Visible = products.Count > 0;
         }
 

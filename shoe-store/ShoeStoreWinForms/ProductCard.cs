@@ -41,7 +41,7 @@ namespace ShoeStoreWinForms
             priceLabel.Text = product.Price.ToString();
             unitLabel.Text = product.Unit;
             quantityLabel.Text = product.Quantity.ToString();
-            discountLabel.Text = product.Discount.ToString();
+            discountLabel.Text = $"{product.Discount}%";
 
             if (!string.IsNullOrEmpty(product.PhotoPath))
             {
@@ -58,7 +58,7 @@ namespace ShoeStoreWinForms
             }
             else
             {
-                BackColor = Color.FromName("Chartreuse");
+                BackColor = ColorTranslator.FromHtml("#7FFF00");
             }
 
             if (product.Discount != 0)

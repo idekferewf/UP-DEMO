@@ -26,11 +26,13 @@ namespace ShoeStoreWinForms
 
         private void cancelButton_Click(object sender, EventArgs e)
         {
+            // Закрытие формы
             DialogResult = DialogResult.Cancel;
         }
 
         private void okButton_Click(object sender, EventArgs e)
         {
+            // Проверка на ввод артикула
             if (string.IsNullOrWhiteSpace(articleTextBox.Text))
             {
                 MessageBox.Show(
@@ -43,6 +45,7 @@ namespace ShoeStoreWinForms
                 return;
             }
 
+            // Проверка, не добавлен ли уже данный артикул
             if (!isEdit_ && productService_.HasArticle(articleTextBox.Text))
             {
                 MessageBox.Show(
@@ -55,6 +58,7 @@ namespace ShoeStoreWinForms
                 return;
             }
 
+            // Проверка на ввод названия
             if (string.IsNullOrWhiteSpace(nameTextBox.Text))
             {
                 MessageBox.Show(
@@ -67,6 +71,7 @@ namespace ShoeStoreWinForms
                 return;
             }
 
+            // Проверка на ввод единицы измерения
             if (string.IsNullOrWhiteSpace(unitTextBox.Text))
             {
                 MessageBox.Show(
@@ -79,6 +84,7 @@ namespace ShoeStoreWinForms
                 return;
             }
 
+            // Проверка на ввод поставщика
             if (string.IsNullOrWhiteSpace(supplierTextBox.Text))
             {
                 MessageBox.Show(
@@ -91,6 +97,7 @@ namespace ShoeStoreWinForms
                 return;
             }
 
+            // Проверка на ввод производителя
             if (string.IsNullOrWhiteSpace(producerTextBox.Text))
             {
                 MessageBox.Show(
@@ -103,6 +110,7 @@ namespace ShoeStoreWinForms
                 return;
             }
 
+            // Проверка на ввод описания
             if (string.IsNullOrWhiteSpace(descriptionTextBox.Text))
             {
                 MessageBox.Show(
@@ -117,6 +125,7 @@ namespace ShoeStoreWinForms
 
             if (!isEdit_)
             {
+                // Создание нового товара, если добавление
                 product_ = new Product(articleTextBox.Text);
             }
 
@@ -136,17 +145,18 @@ namespace ShoeStoreWinForms
 
         private void AddOrEditForm_Load(object sender, EventArgs e)
         {
+            // Установка заголовка и инициализация значений по умолчанию
             if (!isEdit_)
             {
                 photoPictureBox.Load(selectedPhotoPath_);
-                Text = "Добавление товара – ShoeStore";
+                Text = "Добавление товара – ООО «Обувь»";
                 categoryComboBox.Text = "Мужская обувь";
                 return;
             }
 
-            Text = "Редактирование товара – ShoeStore";
+            Text = "Редактирование товара – ООО «Обувь»";
 
-            if (!String.IsNullOrEmpty(product_.PhotoPath))
+            if (!string.IsNullOrEmpty(product_.PhotoPath))
             {
                 selectedPhotoPath_ = $"Pictures/{product_.PhotoPath}";
             }
@@ -177,6 +187,7 @@ namespace ShoeStoreWinForms
                 {
                     try
                     {
+                        // Получение пути изображения и сохранения рядом с программой
                         string sourcePath = openFileDialog.FileName;
                         string fileName = Path.GetFileName(sourcePath);
                         string targetPath = Path.Combine(Application.StartupPath, fileName);

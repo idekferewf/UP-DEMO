@@ -18,12 +18,14 @@ namespace ShoeStoreWinForms
 
         public OrdersForm(User user)
         {
+            // Создание объектов необходимых сервисов
             orderService_ = new OrderService(new MySQLOrderRepository());
             userService_ = new UserService(new MySQLUserRepository());
             pickupLocationService_ = new PickupLocationService(new MySQLPickupLocationRepository());
             currentUser_ = user;
             InitializeComponent();
 
+            // Заполнение заказов
             orders_ = orderService_.GetAllOrders();
             FillOrders(orders_);
             
@@ -38,7 +40,7 @@ namespace ShoeStoreWinForms
         {
             ordersListBox.DataSource = null;
             ordersListBox.DataSource = orders;
-            ordersListBox.DisplayMember = "Id";
+            ordersListBox.DisplayMember = "DisplayId";
         }
 
         private void ordersListBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -49,6 +51,7 @@ namespace ShoeStoreWinForms
                 return;
             }
 
+            // Отображение конкретного заказа
             orderCard.ShowOrderInfo(order);
         }
 
@@ -60,6 +63,7 @@ namespace ShoeStoreWinForms
                 return;
             }
 
+            // Подтверждение перед удалением заказа
             DialogResult result = MessageBox.Show(
                 $"Вы уверены, что хотите удалить заказ {order.Id}?",
                 "Подтверждение удаления",
@@ -70,6 +74,7 @@ namespace ShoeStoreWinForms
 
             if (result == DialogResult.Yes)
             {
+                // Удаление заказа
                 orderService_.DeleteOrder(order);
 
                 orders_.Clear();
@@ -85,6 +90,7 @@ namespace ShoeStoreWinForms
 
             if (result == DialogResult.OK)
             {
+                // Добавление заказа
                 orderService_.AddOrder(addForm.Order);
 
                 orders_.Clear();
@@ -111,6 +117,7 @@ namespace ShoeStoreWinForms
 
             if (result == DialogResult.OK)
             {
+                // Изменение заказа
                 orderService_.EditOrder(editForm.Order);
                 
                 orders_.Clear();

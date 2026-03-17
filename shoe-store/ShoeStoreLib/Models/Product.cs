@@ -26,6 +26,8 @@
 
         public string PhotoPath { get; set; }
 
+        public string DisplayName { get {  return $"{Article} / {Name}"; } }
+
         public Product(string article)
         {
             _article = article;

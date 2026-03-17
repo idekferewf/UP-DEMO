@@ -65,13 +65,13 @@ namespace ShoeStoreWinForms
 
             if (!isEdit_)
             {
-                Text = "Добавление заказа – ShoeStore";
+                Text = "Добавление заказа - ООО «Обувь»";
                 idTextBox.Value = orderService_.GenerateNextId();
                 statusComboBox.Text = "Новый";
                 return;
             }
 
-            Text = "Редактирование заказа – ShoeStore";
+            Text = "Редактирование заказа - ООО «Обувь»";
             idTextBox.Value = order_.Id;
             statusComboBox.Text = order_.Status;
             pickupLocationComboBox.SelectedItem = order_.PickupLocation;

@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+  <Class Name="ShoeStoreLib.Order">
+    <Position X="3.25" Y="2.75" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>CAADAAAEAAAAAQAABABgAAAAAAAACAAAAAAAAAAAAAQ=</HashCode>
+      <FileName>Models\Order.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShoeStoreLib.PickupLocation">
+    <Position X="0.5" Y="2" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAABAAAAAAAAAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>Models\PickupLocation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShoeStoreLib.User">
+    <Position X="0.5" Y="4.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAACAEABAAAAAAAAAAAACAAAQAAAAAAA=</HashCode>
+      <FileName>Models\User.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShoeStoreLib.Models.OrderProductRecord">
+    <Position X="9.5" Y="8" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAgAAAAAA=</HashCode>
+      <FileName>Models\OrderProductRecord.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShoeStoreLib.Services.OrderService">
+    <Position X="7" Y="1.75" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAAAAAAAAAAAAAAAAAAQAEAAgEAAAAAEAAg=</HashCode>
+      <FileName>Services\OrderService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShoeStoreLib.Services.PickupLocationService">
+    <Position X="3.25" Y="6.5" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAACAAQAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Services\PickupLocationService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShoeStoreLib.Services.ProductService">
+    <Position X="7" Y="4.75" Width="6.25" />
+    <TypeIdentifier>
+      <HashCode>AQEAAAAAAAAIAAAAIAAAQAgAgAAQAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Services\ProductService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShoeStoreLib.Models.UserService">
+    <Position X="10.25" Y="2.5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAQAAEAAAA=</HashCode>
+      <FileName>Services\UserService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShoeStoreLib.Repositories.MySQLOrderRepository" BaseTypeListCollapsed="true">
+    <Position X="3.25" Y="0.5" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAgEAAAAgAAAg=</HashCode>
+      <FileName>Repositories\MySQLOrderRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ShoeStoreLib.Repositories.MySQLPickupLocationRepository" BaseTypeListCollapsed="true">
+    <Position X="7" Y="0.5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Repositories\MySQLPickupLocationRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ShoeStoreLib.Repositories.MySQLProductRepository" BaseTypeListCollapsed="true">
+    <Position X="10.25" Y="0.5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAIAAAAIAAAQAgAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Repositories\MySQLProductRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ShoeStoreLib.Models.MySQLUserRepository" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>Repositories\MySQLUserRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ShoeStoreLib.DbConfig">
+    <Position X="0.5" Y="7.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DbConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="ShoeStoreLib.Interfaces.IOrderRepository">
+    <Position X="0.5" Y="8.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAgEAAAAAAAAg=</HashCode>
+      <FileName>Interfaces\IOrderRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ShoeStoreLib.Interfaces.IPickupLocationRepository">
+    <Position X="3.25" Y="8.5" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\IPickupLocationRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ShoeStoreLib.Interfaces.IProductRepository">
+    <Position X="7" Y="8" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAIAAAAIAAAQAgAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\IProductRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ShoeStoreLib.Models.IUserRepository">
+    <Position X="3.25" Y="9.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>Interfaces\IUserRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="ShoeStoreLib.UserRole">
+    <Position X="11.75" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAQAAAAAABAAAAAAAAAAAAAQ=</HashCode>
+      <FileName>Models\UserRole.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

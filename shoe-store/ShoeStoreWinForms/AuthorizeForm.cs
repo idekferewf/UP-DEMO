@@ -11,16 +11,19 @@ namespace ShoeStoreWinForms
 
         public AuthorizeForm()
         {
+            // Создание объекта сервиса пользователей
             userService_ = new UserService(new MySQLUserRepository());
+
             InitializeComponent();
         }
 
         private void loginButton_Click(object sender, EventArgs e)
         {
-            string login = loginComboBox.Text;
+            string login = loginTextBox.Text;
             string password = passwordTextBox.Text;
 
-            if (String.IsNullOrWhiteSpace(password))
+            // Проверка, введён ли пароль
+            if (string.IsNullOrWhiteSpace(password))
             {
                 MessageBox.Show(
                     "Пожалуйста, введите пароль.",
@@ -31,9 +34,11 @@ namespace ShoeStoreWinForms
                 return;
             }
 
+            // Получение пользователя по логину и паролю (авторизация)
             User user = userService_.Login(login, password);
             if (user != null)
             {
+                // Открытие основной формы
                 MainForm mainForm = new MainForm(user);
                 mainForm.FormClosed += (s, args) => Close();
                 mainForm.Show();
@@ -52,15 +57,11 @@ namespace ShoeStoreWinForms
 
         private void loginAsGuestButton_Click(object sender, EventArgs e)
         {
+            // Открытие основной формы под гостем
             MainForm mainForm = new MainForm(null);
             mainForm.FormClosed += (s, args) => Close();
             mainForm.Show();
             Hide();
-        }
-
-        private void AuthorizeForm_Load(object sender, EventArgs e)
-        {
-            loginComboBox.DataSource = userService_.GetAllLogins();
         }
     }
 }
