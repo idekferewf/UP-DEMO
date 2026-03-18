@@ -12,7 +12,7 @@ namespace ShoeStoreWinForms
         private ProductService productService_;
         private Product product_;
         private bool isEdit_;
-        private string selectedPhotoPath_ = "Pictures/picture.png";
+        private string selectedPhotoPath_ = "picture.png";
 
         public AddOrEditProductForm(ProductService productService, Product product, bool isEdit)
         {
@@ -148,7 +148,7 @@ namespace ShoeStoreWinForms
             // Установка заголовка и инициализация значений по умолчанию
             if (!isEdit_)
             {
-                photoPictureBox.Load(selectedPhotoPath_);
+                photoPictureBox.Load($"Pictures/{selectedPhotoPath_}");
                 Text = "Добавление товара – ООО «Обувь»";
                 categoryComboBox.Text = "Мужская обувь";
                 return;
@@ -190,7 +190,7 @@ namespace ShoeStoreWinForms
                         // Получение пути изображения и сохранения рядом с программой
                         string sourcePath = openFileDialog.FileName;
                         string fileName = Path.GetFileName(sourcePath);
-                        string targetPath = Path.Combine(Application.StartupPath, fileName);
+                        string targetPath = Path.Combine(Application.StartupPath, "Pictures", fileName);
                         File.Copy(sourcePath, targetPath, true);
 
                         selectedPhotoPath_ = fileName;

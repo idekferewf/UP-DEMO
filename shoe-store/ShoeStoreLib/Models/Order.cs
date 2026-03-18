@@ -20,7 +20,7 @@ namespace ShoeStoreLib
 
         public int Code { get; set; }
 
-        public string Status {  get; set; }
+        public string Status { get; set; }
 
         public List<OrderProductRecord> Products { get; set; }
 

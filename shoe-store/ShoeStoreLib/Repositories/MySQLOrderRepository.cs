@@ -153,13 +153,13 @@ namespace ShoeStoreLib.Repositories
                     conn.Open();
 
                     string query = "UPDATE orders SET order_date = @order_date, delivery_date = @delivery_date, " +
-                                   "pickup_locationl_id = @pickup_locationl_id, user_id = @user_id, code = @code, status = @status " +
+                                   "pickup_location_id = @pickup_location_id, user_id = @user_id, code = @code, status = @status " +
                                    "WHERE id = @id";
                     MySqlCommand command = new MySqlCommand(query, conn);
 
                     command.Parameters.AddWithValue("@order_date", order.OrderDate);
                     command.Parameters.AddWithValue("@delivery_date", order.DeliveryDate);
-                    command.Parameters.AddWithValue("@pickup_locationl_id", order.PickupLocation?.Id);
+                    command.Parameters.AddWithValue("@pickup_location_id", order.PickupLocation?.Id);
                     command.Parameters.AddWithValue("@user_id", order.User.Id);
                     command.Parameters.AddWithValue("@code", order.Code);
                     command.Parameters.AddWithValue("@status", order.Status);

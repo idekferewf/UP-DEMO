@@ -41,7 +41,7 @@ namespace ShoeStoreWinForms
         {
             if (!isEdit_)
             {
-                Order order_ = new Order((int)idTextBox.Value);
+                order_ = new Order((int)idTextBox.Value);
             }
 
             order_.Status = statusComboBox.Text;
